@@ -1,0 +1,28 @@
+-- database: c:\Users\pravs\OneDrive\Desktop\DTP Project\DTP Project
+
+
+SELECT station, country, COUNT(site) AS [Number of site]
+FROM location
+GROUP BY station
+HAVING COUNT (site) > 2
+ORDER BY COUNT (site) DESC;
+
+--The purpose of this query is to document which space station extended the most succesfully in which country during the 1960’s to 70’s Space Race,US-based consumers would use this query to track more details about televised space stations and compare progress to other rival countries.--
+
+SELECT mission_id, name, date, company FROM mission
+WHERE mission_id > 550 AND company = 'NASA' OR 'US Air Force';
+
+--Taking my consumers age into account the likelyhood of remembering all the defining years is unrealistic therefore reason why my consumers would request a query like this is because the Space Race is dated by an estimated 7 decades, the Apollo missions leading up to the success would be identified by the age of the record and recognizable NASA company.--
+
+SELECT SUM (time) FROM mission
+WHERE status = 'Failure'
+UNION
+SELECT SUM (time) FROM mission
+WHERE status = 'Success';
+
+--Nieche consumer groups such as data analysts & space enthusiasts or calculative people like engineers from a range of countries involved in this historical period would query this information of total hours of success and failure of missions from interest in a measurable total growth of the 1960’s - 70’s.--
+
+SELECT rocket_name, name, location_id FROM rocket, mission
+INNER JOIN rocket_location ON rocket.rocket_ID = rocket_location.rocket_ID;
+
+--This query results in a record of the specifics of rocket locations, pooling important data into 1 joint table for easy access, providing a complex table for every documented mission during this period of time. Especially for older consumers, this easy format makes all information accesible.--

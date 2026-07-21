@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import Flask, g, render_template
 import sqlite3
 
 DATABASE = 'database.db'
@@ -26,15 +26,15 @@ def query_db(query, args=(), one=False):
 
 @app.route('/')
 def home(): 
-    #home page - just the location_id, station and country from location.
-    sql = "SELECT location_id, station, country, rocket_status, rocket_name FROM location, rocket;"
+    #home page - !-- simple query--
+    sql = """SELECT location_id, station, country FROM location"""
     results = query_db(sql)
-    return str(results)
+    return render_template("home.html", results=results)
 
 @app.route("/rocket/<int:id>")
 def rocket(id):
     #just a singular rocket based on id
-    sql = """SELECT * FROM rocket INNER JOIN rocket_location ON rocket_location.rocket_ID = rocket.rocket_ID
+    sql = """SELECT * FROM rocket JOIN rocket_location ON rocket_location.rocket_ID = rocket.rocket_ID
             WHERE rocket.rocket_ID =?;"""
     result = query_db(sql,(id,),True)
     return str(result)
@@ -42,4 +42,3 @@ def rocket(id):
 if __name__ == "__main__":
     app.run(debug=True) 
 
-    

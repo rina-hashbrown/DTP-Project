@@ -1,4 +1,4 @@
--- database: c:\Users\pravs\OneDrive\Desktop\DTP Project\DTP Project
+-- database: c:\Users\pravs\OneDrive\Desktop\DTP Project\database.db
 
 
 SELECT station, country, COUNT(site) AS [Number of site]
@@ -26,3 +26,7 @@ SELECT rocket_name, name, location_id FROM rocket, mission
 INNER JOIN rocket_location ON rocket.rocket_ID = rocket_location.rocket_ID;
 
 --This query results in a record of the specifics of rocket locations, pooling important data into 1 joint table for easy access, providing a complex table for every documented mission during this period of time. Especially for older consumers, this easy format makes all information accesible.--
+
+--just a singular rocket based on id
+SELECT * FROM rocket JOIN rocket_location ON rocket_location.rocket_ID = rocket.rocket_ID
+WHERE rocket.rocket_ID =1;

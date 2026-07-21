@@ -1,0 +1,11 @@
+/* All my custom style can go here!! */
+
+.threecolumn{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5%;
+}
+
+img{
+    width : 100%;
+}

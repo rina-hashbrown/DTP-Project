@@ -1,0 +1,17 @@
+<!-- This is how we extend the base layout so we don;t need to do it again! -->
+{% extends 'base.html' %}
+<!-- Now i can fill out the blocks that I want -->
+{% block content %}
+<h1>All my items</h1>
+<div class="threecolumn">
+{% for item in results %}
+    <div class="item">
+        <h1>{{ item[1] }}</h1>
+        <!-- img is an anchor tag with href to the dynamic route using the id of the item -->
+        <a href="item/{{item[0]}}">
+            <img src="{{url_for('static',filename='images/'+item[2])}}" alt="{{item[2]}}">
+        </a>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

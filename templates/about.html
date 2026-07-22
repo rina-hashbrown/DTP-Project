@@ -1,0 +1,30 @@
+<!-- just one rocket -->
+<!-- Placeholder element where the navigation will load -->
+<div id="navigation-placeholder"></div>
+
+<script>
+  fetch('home.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>
+<!DOCTYPE html>
+<html>
+<title>Space Race</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<body>
+
+<div class="w3-container">
+  <h2>Space Race</h2>
+  <p>A 1960's to 70's archive of Space Missions!</p>
+</div>
+
+<div class="w3-container w3-orange">
+  <p></p>
+</div>
+
+</body>
+</html>
+

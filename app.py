@@ -26,8 +26,10 @@ def query_db(query, args=(), one=False):
 
 @app.route('/')
 def home(): 
-    #home page - !-- simple query--
-    sql = """SELECT location_id, station, country FROM location"""
+    #rocketpage - -- simple query--
+    sql = """
+                SELECT rocket.rocket_ID, rocket.rocket_name, rocket.rocket_status, rocket.imageURl
+                FROM rocket;"""
     results = query_db(sql)
     return render_template("home.html", results=results)
 

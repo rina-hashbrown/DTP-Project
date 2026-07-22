@@ -13,4 +13,16 @@
   <p>All rockets from 1960-70.</p>
 </div>
 
-<img src="Atlas SLV-3.jpg" alt="Atlas">
+{% extends "home.html" %}
+{% blockbody %}
+<!--3 grid rocket-->
+    < div class="three-column">
+        {% for rocket in results %}
+        <div class="w3-card-4">
+            <!--name and then image-->
+            <h1>{{ rocket[1] }} {{ rocket[2] }}</h1>
+            <img src="{{ rocket[3] }}" alt=" {{ rocket[1] }}">
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

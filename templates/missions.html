@@ -1,0 +1,16 @@
+<div id="navigation-placeholder"></div>
+
+<script>
+  fetch('home.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navigation-placeholder').innerHTML = data;
+    });
+</script>
+<!DOCTYPE = html>
+
+<title>Missions</title>
+
+<div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
+  <p>Missions</p>
+</div>

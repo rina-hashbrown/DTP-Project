@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <nav>
-  <a href="home.html">Home</a> | <a href="about.html">About</a>
+  <a href="home.html">Home</a> | <a href="about.html">About</a> | <a href="credits.html">Credentials</a>
 </nav>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat">
@@ -22,16 +23,28 @@
   <h2>Explore More!</h2>
 </div>
 
-
+<!--Linking pages with a bar image-->
 <div class="w3-bar w3-pale-yellow">
-  <a href="#" class="w3-bar-item w3-button" <nav> <a href="rockets.html">Rockets</a> </nav>
-  <a href="#" class="w3-bar-item w3-button">Missions</a>
-  <a href="#" class="w3-bar-item w3-button">Locations</a>
-  <a href="#" class="w3-bar-item w3-button">Rocket Locations</a>
+  <a href="#" class="w3-bar-item w3-button"></a> <nav> <a href="rockets.html">Rockets</a> </nav>
+  <a href="#" class="w3-bar-item w3-button"></a> <nav> <a href="missions.html">Missions</a> </nav>
+  <a href="#" class="w3-bar-item w3-button"></a> <nav> <a href="location.html">Locations</a> </nav>
+  <a href="#" class="w3-bar-item w3-button"></a> <nav> <a href="rocket locations.html">Rocket Locations</a> </nav>
 </div>
 
-</body>
-</html>
 
+<body>
+    <div class="threecolumn">
+        {% for item in results %}
+        <div class="item">
+            <img src="{{url_for('static', filename='images/'+item[3])}}" alt="{{item[1]}}">
+            <div class="item-text-container">
+                <h1>{{item[1]}}</h1>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
 </body>
 </html>

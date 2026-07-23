@@ -33,17 +33,6 @@ def home():
     results = query_db(sql)
     return render_template("home.html", results=results)
 
-from flask import render_template
-
-@app.route('/about')
-@app.route('/about/<name>')
-def hello(name=None):
-    return render_template('about.html', person=name)
-
-@app.route('/about')
-def about():
-    return render_template("about.html", results=any)
-
 @app.route("/rocket/<int:id>")
 def rocket(id):
     #just a singular rocket based on id

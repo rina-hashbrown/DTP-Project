@@ -7,7 +7,7 @@ DATABASE = 'database.db'
 app = Flask(__name__)
 
 def get_db():
-    db = getattr(g, '_database', None)
+    db = getattr(g, '_database.db', None)
     if db is None:
         db = g._database = sqlite3.connect(DATABASE)
     return db
@@ -32,6 +32,17 @@ def home():
                 FROM rocket;"""
     results = query_db(sql)
     return render_template("home.html", results=results)
+
+from flask import render_template
+
+@app.route('/about')
+@app.route('/about/<name>')
+def hello(name=None):
+    return render_template('about.html', person=name)
+
+@app.route('/about')
+def about():
+    return render_template("about.html", results=any)
 
 @app.route("/rocket/<int:id>")
 def rocket(id):

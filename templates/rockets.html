@@ -1,40 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<div id="navigation-placeholder"></div>
+{% block body %}
+  <h1>Rocket Roster</h1>
 
-<script>
-  fetch('home.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
-<!DOCTYPE = html>
+  <div class="rocket-container">
+    {% for rocket in rockets %}
+      <div class="card">
+        <h3>{{ rocket.rocket_name }}</h3>
+        <p>Status: {{ rocket.rocket_status }}</p>
+        
+        {% if rocket.image_url %}
+          <img src="{{ url_for('static', filename=rocket.image_url) }}" alt="{{ rocket.rocket_name }}">
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
 
-<div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
-  <p>All rockets from 1960-70.</p>
-</div>
-
-{% extends "home.html" %}
-{% blockbody %}
-<!--3 grid rocket-->
-    < div class="three-column">
-        {% for rocket in results %}
-        <div class="w3-card-4">
-            <!--name and then image-->
-            <h1>{{ rocket[1] }} {{ rocket[2] }}</h1>
-            <img src="{{ rocket[3] }}" alt=" {{ rocket[1] }}">
-        </div>
-        {% endfor %}
-    </div>
-{% endblock %}
-
-</body>
-</html>
+  <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
+    <p>All rockets from 1960-70.</p>
+  </div>
+{% endblock body %}

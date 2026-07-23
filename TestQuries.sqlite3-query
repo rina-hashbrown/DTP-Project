@@ -42,3 +42,7 @@ WHERE date LIKE '%/%/%';
 UPDATE mission 
 SET price = REPLACE(price, ',', '')
 WHERE price LIKE '%,%';
+
+UPDATE mission 
+SET time = '0' || time 
+WHERE length(time) = 7;

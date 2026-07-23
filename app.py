@@ -3,7 +3,7 @@ from typing import Optional
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, Text, select
+from sqlalchemy import String, Text, Float, select
 
 # Create the app
 app = Flask(__name__)
@@ -15,6 +15,17 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize Flask-SQLAlchemy extension
 db = SQLAlchemy(app)
+
+with app.app_context():
+    db.reflect()
+
+# From the default bind key
+class Mission(db.Model):
+    __table__ = db.metadata.tables["mission"]
+
+# From an "auth" bind key
+class Location(db.Model):
+    __table__ = db.metadatas["mission"].tables["location"]
 
 # Define Model inheriting from db.Model
 class Rocket(db.Model):
@@ -37,7 +48,6 @@ class Rocket(db.Model):
 def get_rockets():
     rockets = db.session.execute(select(Rocket)).scalars().all()
     return render_template('rockets.html', rockets=rockets)
-
 
 if __name__ == "__main__":
     app.run(debug=True)

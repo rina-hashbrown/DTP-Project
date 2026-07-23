@@ -37,3 +37,8 @@ SET date = substr(date, -4) || '-' ||
            printf('%02d', substr(date, instr(date, '/') + 1, instr(substr(date, instr(date, '/') + 1), '/') - 1)) || '-' || 
            printf('%02d', substr(date, 1, instr(date, '/') - 1))
 WHERE date LIKE '%/%/%';
+
+--removing commas to reflect type--
+UPDATE mission 
+SET price = REPLACE(price, ',', '')
+WHERE price LIKE '%,%';

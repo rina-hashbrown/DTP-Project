@@ -30,3 +30,10 @@ INNER JOIN rocket_location ON rocket.rocket_ID = rocket_location.rocket_ID;
 --just a singular rocket based on id
 SELECT * FROM rocket JOIN rocket_location ON rocket_location.rocket_ID = rocket.rocket_ID
 WHERE rocket.rocket_ID =1;
+
+--changed format to fit data type--
+UPDATE mission 
+SET date = substr(date, -4) || '-' || 
+           printf('%02d', substr(date, instr(date, '/') + 1, instr(substr(date, instr(date, '/') + 1), '/') - 1)) || '-' || 
+           printf('%02d', substr(date, 1, instr(date, '/') - 1))
+WHERE date LIKE '%/%/%';

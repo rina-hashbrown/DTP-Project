@@ -1,22 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
+{% extends "base.html" %}
 
-<div id="navigation-placeholder"></div>
+{% block body %}
+  <h1>Launch Sites & Stations</h1>
 
-<script>
-  fetch('home.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
-<!DOCTYPE = html>
+  <div class="location-container">
+    {% for location in locations %}
+      <div class="card">
+        <h3>{{ location.station }}</h3>
+        <p><strong>Site:</strong> {{ location.site }}</p>
+        
+        {% if location.state and location.state != 'None' and location.state != '' %}
+          <p><strong>State:</strong> {{ location.state }}</p>
+        {% endif %}
+
+        {% if location.region and location.region != 'None' and location.region != '' %}
+          <p><strong>Region:</strong> {{ location.region }}</p>
+        {% endif %}
+
+        <p><strong>Country:</strong> {{ location.country }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
+    <p>All launch locations from 1960-70.</p>
+  </div>
+{% endblock body %}

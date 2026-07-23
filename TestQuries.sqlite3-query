@@ -46,3 +46,4 @@ WHERE price LIKE '%,%';
 UPDATE mission 
 SET time = '0' || time 
 WHERE length(time) = 7;
+

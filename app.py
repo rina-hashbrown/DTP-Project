@@ -26,6 +26,9 @@ class Rocket(db.Model):
 class Mission(db.Model):
     __table__ = db.metadata.tables["mission"]
 
+class Location(db.Model):
+    __table__ = db.metadata.tables["location"]
+
 # Define Model inheriting from db.Model
 
 @app.route('/')
@@ -42,6 +45,11 @@ def get_rockets():
 def get_missions():
     missions = db.session.execute(select(Mission)).scalars().all()
     return render_template('missions.html', missions=missions)
+
+@app.route('/locations')
+def get_locations():
+    locations = db.session.execute(select(Location)).scalars().all()
+    return render_template('location.html', locations=locations)
 
 if __name__ == "__main__":
     app.run(debug=True)

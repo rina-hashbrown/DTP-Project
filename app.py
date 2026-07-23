@@ -3,7 +3,7 @@ from typing import Optional
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, Text, Float, select
+from sqlalchemy import String, Text, Float, Column, select
 
 # Create the app
 app = Flask(__name__)
@@ -26,6 +26,11 @@ class Rocket(db.Model):
 class Mission(db.Model):
     __table__ = db.metadata.tables["mission"]
 
+# Force SQLAlchemy to read these columns as plain text strings
+    time = Column(Text)
+    date = Column(Text)
+    price = Column(Text)
+    
 # Define Model inheriting from db.Model
 
 @app.route('/')

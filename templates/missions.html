@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-<div id="navigation-placeholder"></div>
+{% extends "base.html" %}
 
-<script>
-  fetch('home.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
-<!DOCTYPE = html>
+{% block body %}
+  <h1>Mission Log</h1>
 
-<title>Missions</title>
+  <div class="mission-container">
+    {% for mission in missions %}
+      <div class="card">
+        <h3>{{ mission.name }}</h3>
+        <p>Status: {{ mission.status }}</p>
+        <p>Company: {{ mission.company }}</p>
+        <p>Date & Time: {{ mission.date }} at {{ mission.time }}</p>
+        
+        {% if mission.price %}
+          <p>Price:${{ mission.price }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
 
-<div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
-  <p>Missions</p>
-</div>
-
-</body>
-</html>
-
+  <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
+    <p>All missions from 1960-70.</p>
+  </div>
+{% endblock body %}

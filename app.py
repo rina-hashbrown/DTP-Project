@@ -20,34 +20,28 @@ with app.app_context():
     db.reflect()
 
 # From the default bind key
+class Rocket(db.Model):
+    __table__ = db.metadata.tables["rocket"]
+
 class Mission(db.Model):
     __table__ = db.metadata.tables["mission"]
 
-# From an "auth" bind key
-class Location(db.Model):
-    __table__ = db.metadatas["mission"].tables["location"]
-
 # Define Model inheriting from db.Model
-class Rocket(db.Model):
-    __tablename__ = "rocket"
-
-    # Primary Key
-    rocket_id: Mapped[int] = mapped_column(primary_key=True)
-
-    # Rocket Name
-    rocket_name: Mapped[str] = mapped_column(String(100))
-
-    # Rocket Status
-    rocket_status: Mapped[str] = mapped_column(String(50))
-
-    # Image URL (Optional)
-    imageurl: Mapped[Optional[str]] = mapped_column(Text(), nullable=True)
-
 
 @app.route('/')
+def home():
+    return render_template('home.html', results=any)
+
+@app.route('/rockets')
 def get_rockets():
     rockets = db.session.execute(select(Rocket)).scalars().all()
     return render_template('rockets.html', rockets=rockets)
+
+# Route for the Missions page
+@app.route('/missions')
+def get_missions():
+    missions = db.session.execute(select(Mission)).scalars().all()
+    return render_template('missions.html', missions=missions)
 
 if __name__ == "__main__":
     app.run(debug=True)

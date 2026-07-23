@@ -15,11 +15,3 @@ def about():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-#initialise app
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    rocket_list = ["Atlas-D Able", "Soyuz"]
-    return render_template('home.html', rockets=rocket_list)

@@ -3,8 +3,15 @@ import sqlite3
 
 DATABASE = 'database.db'
 
-#initialise app
+#modern way includes
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+from sqlalchemy import String, Integer, ForeignKey, select
+
+# create the app
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+db = SQLAlchemy(app)
 
 def get_db():
     db = getattr(g, '_database.db', None)
@@ -22,7 +29,7 @@ def query_db(query, args=(), one=False):
     cur = get_db().execute(query, args)
     rv = cur.fetchall()
     cur.close()
-    return (rv[0] if rv else None) if one else rv      
+    return (rv[0] if rv else None) if one else rv
 
 @app.route('/')
 def home(): 

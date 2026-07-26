@@ -42,11 +42,11 @@ class Joint(db.Model):
 def home():
     return render_template('home.html', results=None)
 
-@app.route('/')
+@app.route('/about')
 def about():
     return render_template('about.html', results=None)
 
-@app.route('/')
+@app.route('/credits')
 def credits():
     return render_template('credits.html', results=None)
 

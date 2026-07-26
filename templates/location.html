@@ -7,6 +7,9 @@
     {% for location in locations %}
       <div class="card">
         <h3>{{ location.station }}</h3>
+
+        <p><strong>Location ID:</strong> {{ location.location_ID}}</p>
+
         <p><strong>Site:</strong> {{ location.site }}</p>
         
         {% if location.state and location.state != 'None' and location.state != '' %}

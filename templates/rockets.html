@@ -5,14 +5,16 @@
 
   <div class="rocket-container">
     {% for rocket in rockets %}
-      <div class="card">
-        <h3>{{ rocket.rocket_name }}</h3>
-        <p>Status: {{ rocket.rocket_status }}</p>
+      <div class="grid-container">
+        <div class ="item">Item 1<h3>{{ rocket.rocket_name }}</h3></div>
+        <div class ="item">Item 2<p>Rocket ID: {{ rocket.rocket_ID }}</p></div>
+        <div class ="item">Item 3<p>Status: {{ rocket.rocket_status }}</p></div>
         
-        {% if rocket.image_url %}
-       <img class="imageURL" src="{{ url_for('static', filename=rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
+         <div class ="item">Item 4
+        {% if rocket.imageURL %}
+        <img class="imageURL" src="{{ url_for('static', filename='images/' + rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
         {% endif %}
-
+         </div>
       </div>
     {% endfor %}
   </div>

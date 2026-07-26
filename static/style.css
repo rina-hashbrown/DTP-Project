@@ -4,10 +4,21 @@ body,h1,h2,h3,h4,h5,h6 {font-family: Montserrat, sans-serif;}
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 2em;
+    align-items: left;
 }
 
 /* all images 100 percent*/
 
 img{
     width: 25%;
+}
+
+.search {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    float: right;
+    padding: 14px;
+    border-radius: 28;
+    background: #ffc067
 }

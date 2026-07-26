@@ -30,7 +30,13 @@ class Location(db.Model):
     __table__ = db.metadata.tables["location"]
 
 class Joint(db.Model):
-  __table__ = db.metadata.tables["joint"]
+  __table__ = db.metadata.tables['joint']
+  __mapper_args__ = {
+      'primary_key': [
+          db.metadata.tables['joint'].c.rocket_ID,
+          db.metadata.tables['joint'].c.location_ID,
+      ]
+  }
 
 
 @app.route('/')

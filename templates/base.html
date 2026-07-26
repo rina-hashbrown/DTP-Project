@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <title>Space Race</title>
 
 
 </head>
@@ -16,15 +15,16 @@
 
   <!-- Header -->
   <header class="w3-container w3-padding-32">
-    <h1>Space Race</h1>
+  <h1 class="w3-text-red">Space Race</h1>
   </header>
-
+  
   <!-- Shared Navigation Bar -->
-  <nav class="w3-bar w3-pale-yellow">
+  <nav class="w3-bar w3-orange">
     <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Home</a>
     <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
     <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
-    <a href="{{ url_for('get_locations') }}" class="w3-bar-item w3-button">Locations </a>
+    <a href="{{ url_for('get_locations') }}" class="w3-bar-item w3-button">Locations</a>
+    <a href="{{ url_for('get_rocket_locations') }}" class="w3-bar-item w3-button">Mission Overview</a>
   </nav>
 
   <!-- Page content gets injected here -->

@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
+{% extends "base.html" %}
 
-<div id="navigation-placeholder"></div>
+{% block body %}
+  <h1>Mission Specs & Overview</h1>
 
-<script>
-  fetch('home.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
-<!DOCTYPE = html>
+  <div class="rocket_location-container">
+    {% for rocket in rockets %}
+      <div class="card">
+        <p>Rocket: {{ rocket_location.rocket_ID }}</p>
+        <p>Location: {{ rocket_location.location_ID }}</p>
+        <p>Mission Name: {{ rocket_location.mission_name }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
+    <p>Find what rocket & location each of your favourite missions used!</p>
+  </div>
+{% endblock body %}

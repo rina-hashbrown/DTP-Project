@@ -29,7 +29,6 @@ class Mission(db.Model):
 class Location(db.Model):
     __table__ = db.metadata.tables["location"]
 
-# Replace lines 32-46 with this single line:
 class RocketLocation(db.Model):
     __table__ = db.metadata.tables["rocket_location"]
 
@@ -42,7 +41,6 @@ def get_rockets():
     rockets = db.session.execute(select(Rocket)).scalars().all()
     return render_template('rockets.html', rockets=rockets)
 
-# Route for the Missions page
 @app.route('/missions')
 def get_missions():
     missions = db.session.execute(select(Mission)).scalars().all()

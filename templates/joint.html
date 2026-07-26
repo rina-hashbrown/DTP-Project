@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block body %}
 <div class="container mt-4">
     <h2>Joint Data</h2>
     <table class="table table-striped table-bordered mt-3">
@@ -12,7 +12,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in joints %}
+            {% for joint in joints %}
             <tr>
                 <td>{{ joint.rocket_ID }}</td>
                 <td>{{ joint.location_ID }}</td>
@@ -22,4 +22,4 @@
         </tbody>
     </table>
 </div>
-{% endblock %}
+{% endblock body %}

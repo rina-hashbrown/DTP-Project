@@ -38,10 +38,17 @@ class Joint(db.Model):
       ]
   }
 
-
 @app.route('/')
 def home():
     return render_template('home.html', results=None)
+
+@app.route('/')
+def about():
+    return render_template('about.html', results=None)
+
+@app.route('/')
+def credits():
+    return render_template('credits.html', results=None)
 
 @app.route('/rockets')
 def get_rockets():

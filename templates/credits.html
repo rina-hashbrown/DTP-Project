@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
+{% extends "base.html" %}
 
-<div id="navigation-placeholder"></div>
-
-<script>
-  fetch('home.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('navigation-placeholder').innerHTML = data;
-    });
-</script>
-<!DOCTYPE html>
+{% block body %}
+<div class="w3-container w3-margin-top">
+    <h2>Explore More!</h2>
+    <p>These are the credits</p>
+</div>
+{% endblock body %}

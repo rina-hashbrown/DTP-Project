@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Rocket Locations</h2>
+    <h2>Joint Data</h2>
     <table class="table table-striped table-bordered mt-3">
         <thead class="table-dark">
             <tr>
@@ -12,11 +12,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in rocket_locations %}
+            {% for item in joints %}
             <tr>
-                <td>{{ item.rocket_ID }}</td>
-                <td>{{ item.location_ID }}</td>
-                <td>{{ item.mission_name }}</td>
+                <td>{{ joint.rocket_ID }}</td>
+                <td>{{ joint.location_ID }}</td>
+                <td>{{ joint.mission_name }}</td>
             </tr>
             {% endfor %}
         </tbody>

@@ -10,7 +10,7 @@
         <p>Status: {{ rocket.rocket_status }}</p>
         
         {% if rocket.image_url %}
-       <img class="imageURL" src="{{ url_for('static', filename=rocket.image_url) }}" alt="{{ rocket.rocket_name }}">
+       <img class="imageURL" src="{{ url_for('static', filename=rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
         {% endif %}
 
       </div>

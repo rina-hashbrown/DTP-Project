@@ -29,8 +29,9 @@ class Mission(db.Model):
 class Location(db.Model):
     __table__ = db.metadata.tables["location"]
 
-class RocketLocation(db.Model):
-    __table__ = db.metadata.tables["rocket_location"]
+class Joint(db.Model):
+  __table__ = db.metadata.tables["joint"]
+
 
 @app.route('/')
 def home():
@@ -51,11 +52,10 @@ def get_locations():
     locations = db.session.execute(select(Location)).scalars().all()
     return render_template('location.html', locations=locations)
 
-@app.route('/rocket-locations')
-def show_rocket_locations():
-  rocket_locations = RocketLocation.query.all()
-  return render_template(
-      'rocket_locations.html', rocket_locations=rocket_locations)
+@app.route('/joints')
+def get_joints():
+  joints = db.session.execute(select(Joint)).scalars().all()
+  return render_template('joint.html', joints=joints)
 
 if __name__ == "__main__":
     app.run(debug=True)

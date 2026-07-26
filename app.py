@@ -1,9 +1,10 @@
 import os
 from typing import Optional
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import String, Text, Float, Column, select
+import sqlite3
 
 # Create the app
 app = Flask(__name__)
@@ -52,8 +53,17 @@ def credits():
 
 @app.route('/rockets')
 def get_rockets():
-    rockets = db.session.execute(select(Rocket)).scalars().all()
+    stmt = select(Rocket)
+    rockets = db.session.scalars(stmt).all()
     return render_template('rockets.html', rockets=rockets)
+
+@app.route("/rocket/<int:id>")
+def single_rocket(id):
+    stmt = select(Rocket).where(Rocket.rocket_ID == id)
+    rocket_item = db.session.execute(stmt).scalar_one_or_none()
+    if rocket_item is None:
+        abort(404)
+    return render_template('rocket_detail.html', rocket=rocket_item)
 
 @app.route('/missions')
 def get_missions():

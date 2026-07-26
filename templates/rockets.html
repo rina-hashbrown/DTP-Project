@@ -1,25 +1,28 @@
 {% extends "base.html" %}
 
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
 {% block body %}
+
   <h1>Rocket Roster</h1>
 
-  <div class="rocket-container">
+
+  <div class="w3-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
     {% for rocket in rockets %}
-      <div class="grid-container">
-        <div class ="item">Item 1<h3>{{ rocket.rocket_name }}</h3></div>
-        <div class ="item">Item 2<p>Rocket ID: {{ rocket.rocket_ID }}</p></div>
-        <div class ="item">Item 3<p>Status: {{ rocket.rocket_status }}</p></div>
-        
-         <div class ="item">Item 4
-        {% if rocket.imageURL %}
-        <img class="imageURL" src="{{ url_for('static', filename='images/' + rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
-        {% endif %}
-         </div>
-      </div>
+      <a href="{{ url_for('single_rocket', id=rocket.rocket_ID) }}" style="display: block; text-decoration: none; color: inherit;">
+        <div class="w3-card-4" class="cropped-image">
+          <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
+          <div class="w3-container w3-center w3-hover-shadow">
+          <h3>{{ rocket.rocket_name }}</h3>
+          </div>
+        </div>
+      </a>
     {% endfor %}
   </div>
 
   <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
     <p>All rockets from 1960-70.</p>
   </div>
-{% endblock body %}
+{% endblock %}

@@ -1,16 +1,13 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: Montserrat, sans-serif;}
 
-.five-column{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 2em;
-    align-items: left;
+.h1{
+    font-size: 25;
 }
 
-/* all images 100 percent*/
-
-img{
-    width: 25%;
+.w3-card-4 img{
+  width: 100%;
+  height: 75%;
+  gap: 5em;
 }
 
 .search {
@@ -22,3 +19,4 @@ img{
     border-radius: 28;
     background: #ffc067
 }
+

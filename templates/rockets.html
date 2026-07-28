@@ -6,19 +6,18 @@
 
 {% block body %}
 
+<div class="w3-animate-left">
   <h1>Rocket Roster</h1>
+</div>
 
-
-  <div class="w3-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
+  <div class="main-rocket w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
     {% for rocket in rockets %}
       <a href="{{ url_for('single_rocket', id=rocket.rocket_ID) }}" style="display: block; text-decoration: none; color: inherit;">
-        <div class="w3-card-4" class="cropped-image">
-          <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
-          <div class="w3-container w3-center w3-hover-shadow">
-          <h3>{{ rocket.rocket_name }}</h3>
-          </div>
+        <div class= "main-rocket w3-card-4 w3-center w3-hover-shadow">
+        <h3>{{ rocket.rocket_name }}</h3>
+        <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
         </div>
-      </a>
+       </a>
     {% endfor %}
   </div>
 

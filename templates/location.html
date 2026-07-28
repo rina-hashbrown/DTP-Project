@@ -5,31 +5,18 @@
 </head>
 
 {% block body %}
-  <h1>Launch Sites & Stations</h1>
+  <h1>Launch Sites</h1>
+    <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
+      <p>All launch locations from 1960-70. Click on one for more information!</p>
+    </div>
 
-  <div class="location-container">
+  <div class="main-location w3-grid w3-animate-bottom" style= "display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
     {% for location in locations %}
-      <div class="card">
-        <h3>{{ location.station }}</h3>
-
-        <p><strong>Location ID:</strong> {{ location.location_ID}}</p>
-
-        <p><strong>Site:</strong> {{ location.site }}</p>
-        
-        {% if location.state and location.state != 'None' and location.state != '' %}
-          <p><strong>State:</strong> {{ location.state }}</p>
-        {% endif %}
-
-        {% if location.region and location.region != 'None' and location.region != '' %}
-          <p><strong>Region:</strong> {{ location.region }}</p>
-        {% endif %}
-
-        <p><strong>Country:</strong> {{ location.country }}</p>
-      </div>
+      <a href="{{ url_for('single_location', id=location.location_ID) }}" style="display: block; text-decoration: none; color: inherit;">
+        <div class="main-location w3-card-4 w3-center w3-hover-shadow">
+          <h3> {{ location.site }}</h3>
+        </div>
+      </a>
     {% endfor %}
-  </div>
-
-  <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
-    <p>All launch locations from 1960-70.</p>
   </div>
 {% endblock body %}

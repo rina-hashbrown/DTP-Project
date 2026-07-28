@@ -75,6 +75,14 @@ def get_locations():
     locations = db.session.execute(select(Location)).scalars().all()
     return render_template('location.html', locations=locations)
 
+@app.route("/location/<int:id>")
+def single_location(id):
+    stmt = select(Location).where(Location.location_ID == id)
+    location_item = db.session.execute(stmt).scalar_one_or_none()
+    if location_item is None:
+        abort(404)
+    return render_template('location_detail.html', location=location_item)
+
 @app.route('/joints')
 def get_joints():
   joints = db.session.execute(select(Joint)).scalars().all()

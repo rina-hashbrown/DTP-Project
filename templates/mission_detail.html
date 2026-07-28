@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+{% block body %}
+  <div class="mission-detail w3-container w3-animate-left" style="gap: 10px">
+    <a href="{{ url_for('get_missions') }}" class="back-btn">&larr; Back to Roster</a>
+
+    <div class="card-wrapper">
+        <div class="detail w3-card-4">
+            <h3>{{ mission.name }}</h3>
+            <p>Status: {{ mission.status }}</p>
+            <p>Company: {{ mission.company }}</p>
+            <p>Date & Time: {{ mission.date }} at {{ mission.time }}</p>
+            <p><strong>Price:</strong> 
+                {% if mission.price and mission.price != 'None' and mission.price != '' %}
+                    ${{ mission.price }}
+                {% else %}
+                    N/A
+                {% endif %}
+        </div>
+    </div>
+{% endblock body %}

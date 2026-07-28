@@ -70,6 +70,14 @@ def get_missions():
     missions = db.session.execute(select(Mission)).scalars().all()
     return render_template('missions.html', missions=missions)
 
+@app.route("/mission/<int:id>")
+def single_mission(id):
+    stmt = select(Mission).where(Mission.mission_ID == id)
+    mission_item = db.session.execute(stmt).scalar_one_or_none()
+    if mission_item is None:
+        abort(404)
+    return render_template('mission_detail.html', mission=mission_item)
+
 @app.route('/locations')
 def get_locations():
     locations = db.session.execute(select(Location)).scalars().all()
@@ -87,6 +95,15 @@ def single_location(id):
 def get_joints():
   joints = db.session.execute(select(Joint)).scalars().all()
   return render_template('joint.html', joints=joints)
+
+@app.route("/joint/<int:id>")
+def single_joint(id):
+    stmt = select(Joint).where(Joint.location_ID == id)
+    joint_item = db.session.execute(stmt).scalar_one_or_none()
+    if joint_item is None:
+        abort(404)
+    return render_template('joint_detail.html', joint=joint_item)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

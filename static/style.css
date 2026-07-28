@@ -1,13 +1,33 @@
-body,h1,h2,h3,h4,h5,h6 {font-family: Montserrat, sans-serif;}
+body,h1,h2,h3,h4,h5,h6 {
+    font-family: "Gloock", serif;
+    color:rgb(249, 77, 30);
+}
 
 .h1{
-    font-size: 60px;
+    font-size: 100px;
+    background: #FF6852;
+}
+
+.space.w3-text{
+    color: #259a75;
+}
+
+body{
+    background-color: #fbefe8;
+}
+.nav.w3-container{
+    color:#FF6852;
+}
+
+.space.w3-container.w3-padding-32{
+    background-color: #FFB371;
 }
 
 .main-rocket.w3-card-4{
     width: 325px;
     height: 400px;
-    border: 5px solid rgb(237, 125, 27);
+    border: 5px solid #FF6852;
+    background-color: #FFB371;
     margin-bottom: 25px;
     gap: 10em
 }
@@ -19,7 +39,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: Montserrat, sans-serif;}
  }
 
 .rocket-detail-w3-grid{
-    background-color: rgb(254, 201, 110);
+    background-color: rgb(246, 121, 38);
 }
  
 .search{
@@ -29,7 +49,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: Montserrat, sans-serif;}
     float: right;
     padding: 14px;
     border-radius: 28;
-    background: #ffc067;
+    background: #29d4a9;
 }
 
 .rocket-detail-w3-container{

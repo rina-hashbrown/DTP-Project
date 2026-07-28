@@ -6,27 +6,16 @@
 
 {% block body %}
   <h1>Mission Log</h1>
+  <p>All mission statistics from 1960-70. Click on one for more information!</p>
 
-  <div class="mission-container">
+  <div class="main-mission w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
     {% for mission in missions %}
-      <div class="card">
-        <h3>{{ mission.name }}</h3>
-        <p>Status: {{ mission.status }}</p>
-        <p>Company: {{ mission.company }}</p>
-        <p>Date & Time: {{ mission.date }} at {{ mission.time }}</p>
-  
-      <p><strong>Price:</strong> 
-      {% if mission.price and mission.price != 'None' and mission.price != '' %}
-        ${{ mission.price }}
-      {% else %}
-        N/A
-      {% endif %}
-      </p>
+      <a href="{{ url_for('single_mission', id=mission.mission_ID) }}" style="display: block; text-decoration: none; color: inherit;">
+        <div class="main-mission w3-card-4 w3-center w3-hover-shadow">
+            <h3>{{ mission.name }}</h3>
+            </p>
+        </div>
+      </a>
+    {% endfor %}
 
-    </div>
-{% endfor %}
-
-  <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
-    <p>All missions from 1960-70.</p>
-  </div>
 {% endblock body %}

@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Space Race</title>
 </head>
 <body class="w3-container">
 
@@ -27,21 +28,21 @@
 
 
   <!-- Shared Navigation Bar -->
-  <nav class="w3-bar nav w3-container w3-deep-orange">
+  <nav class="w3-bar nav w3-container">
     <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
     <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
     <a href="{{ url_for('get_locations') }}" class="w3-bar-item w3-button">Locations</a>
     <a href="{{ url_for('get_joints') }}" class="w3-bar-item w3-button">Mission Overview</a>
     <form>
-    <div class="search">
-        <input class="search-input" type="search" placeholder="Search">
-        <span class="search-icon material-symbols-outlined">search</span>
-    </div>
-  </form>
+      <div class="search">
+          <input class="search-input" type="search" placeholder="Search">
+          <span class="search-icon material-symbols-outlined">search</span>
+      </div>
+    </form>
   </nav>
 
-{% block body %}
-{% endblock body %}
-
+  {% block body %}
+  {% endblock body %}
+  <script src="./scripts/app.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 body,h1,h2,h3,h4,h5,h6 {
     font-family: "Gloock", serif;
-    color:rgb(249, 77, 30);
+    color:rgb(236, 85, 25);
 }
 
 .h1{
@@ -16,7 +16,8 @@ body{
     background-color: #fbefe8;
 }
 .nav.w3-container{
-    color:#FF6852;
+    background-color:#fe6952;
+    color:#fbefe8;
 }
 
 .space.w3-container.w3-padding-32{
@@ -29,7 +30,7 @@ body{
     border: 5px solid #FF6852;
     background-color: #FFB371;
     margin-bottom: 25px;
-    gap: 10em
+    gap: 10em;
 }
 
 .main-rocket.w3-card-4 img{

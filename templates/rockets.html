@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
-<head>
-  <link rel="stylesheet" href="style.css">
-</head>
-
 {% block body %}
+
+<link rel="stylesheet" href="style.css">
+
+<div class="input-container">
+   <input type="text" id="rocketSearch" name="rocketSearch" class="rocket-search">
+</div>
 
 <div class="w3-animate-left">
   <h1>Rocket Roster</h1>
@@ -14,7 +16,7 @@
     {% for rocket in rockets %}
       <a href="{{ url_for('single_rocket', id=rocket.rocket_ID) }}" style="display: block; text-decoration: none; color: inherit;">
         <div class= "main-rocket w3-card-4 w3-center w3-hover-shadow">
-          <h3>{{ rocket.rocket_name }}</h3>
+          <h3 class="title">{{ rocket.rocket_name }}</h3>
           <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
         </div>
       </a>
@@ -24,4 +26,5 @@
   <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
     <p>All rockets from 1960-70.</p>
   </div>
+    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>
 {% endblock %}

@@ -3,6 +3,11 @@ body,h1,h2,h3,h4,h5,h6 {
     color:rgb(236, 85, 25);
 }
 
+body{
+    background-color: #fbeae1;
+    background-image: url(test.jpg);
+}
+
 .h1{
     font-size: 100px;
     background: #FF6852;
@@ -12,9 +17,7 @@ body,h1,h2,h3,h4,h5,h6 {
     color: #000000;
 }
 
-body{
-    background-color: #fbefe8;
-}
+
 .nav.w3-container{
     background-color:#fe6952;
     color:#fbefe8;

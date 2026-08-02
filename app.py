@@ -96,14 +96,6 @@ def get_joints():
   joints = db.session.execute(select(Joint)).scalars().all()
   return render_template('joint.html', joints=joints)
 
-@app.route("/joint/<int:id>")
-def single_joint(id):
-    stmt = select(Joint).where(Joint.location_ID == id)
-    joint_item = db.session.execute(stmt).scalar_one_or_none()
-    if joint_item is None:
-        abort(404)
-    return render_template('joint_detail.html', joint=joint_item)
-
 
 if __name__ == "__main__":
     app.run(debug=True)

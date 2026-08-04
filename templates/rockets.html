@@ -2,51 +2,51 @@
 
 {% block body %}
 
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 
-<div class="input-container">
-    <input id="cardSearchInput" type="text" placeholder="Search...">
-</div>
-
-<div class="w3-animate-left">
-  <h1>Rocket Roster</h1>
-</div>
-
-  <div class="main-rocket w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
-    {% for rocket in rockets %}
-      <a href="{{ url_for('single_rocket', id=rocket.rocket_ID) }}" style="display: block; text-decoration: none; color: inherit;">
-        <div class= "main-rocket w3-card-4 w3-center w3-hover-shadow">
-          <h3 class="title">{{ rocket.rocket_name }}</h3>
-          <p class="contents"> {{ rocket.rocket_ID }} {{ rocket.rocket_status }} </p>
-          <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
-        </div>
-      </a>
-    {% endfor %}
+  <div class="input-container">
+      <input id="cardSearchInput" type="text" placeholder="Search...">
   </div>
 
-  <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
-  <p>All rockets from 1960-70.</p>
-</div>
+  <div class="w3-animate-left">
+    <h1>Rocket Roster</h1>
+  </div>
 
-<script>
-  let searchInput = document.getElementById('cardSearchInput');
-  let cardLinks = document.querySelectorAll('.main-rocket > a');
+    <div class="main-rocket w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
+      {% for rocket in rockets %}
+        <a href="{{ url_for('single_rocket', id=rocket.rocket_ID) }}" style="display: block; text-decoration: none; color: inherit;">
+          <div class= "main-rocket w3-card-4 w3-center w3-hover-shadow">
+            <h3 class="title">{{ rocket.rocket_name }}</h3>
+            <p class="contents"> {{ rocket.rocket_ID }} {{ rocket.rocket_status }} </p>
+            <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
+          </div>
+        </a>
+      {% endfor %}
+    </div>
 
-  if (searchInput) {
-    searchInput.addEventListener('keyup', function(event) {
-      let searchText = event.target.value.toLowerCase();
+    <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
+    <p>All rockets from 1960-70.</p>
+  </div>
 
-      cardLinks.forEach(function(cardLink) {
-        let cardText = cardLink.innerText.toLowerCase();
+  <script>
+    let searchInput = document.getElementById('cardSearchInput');
+    let cardLinks = document.querySelectorAll('.main-rocket > a');
 
-        if (cardText.includes(searchText)) {
-          cardLink.style.display = ""; // 
-        } else {
-          cardLink.style.display = "none"; //
-        }
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function(event) {
+        let searchText = event.target.value.toLowerCase();
+
+        cardLinks.forEach(function(cardLink) {
+          let cardText = cardLink.innerText.toLowerCase();
+
+          if (cardText.includes(searchText)) {
+            cardLink.style.display = ""; // 
+          } else {
+            cardLink.style.display = "none"; //
+          }
+        });
       });
-    });
-  }
-</script>
+    }
+  </script>
 
 {% endblock %}

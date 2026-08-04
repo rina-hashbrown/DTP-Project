@@ -3,10 +3,6 @@ body,h1,h2,h3,h4,h5,h6 {
     color:rgb(236, 85, 25);
 }
 
-body{
-    background-color: #fbeae1;
-    background-image: url(test.jpg);
-}
 
 p.contents{
     font-size: xx-small;
@@ -51,13 +47,12 @@ p.contents{
     background-color: rgb(246, 121, 38);
 }
  
-.search{
+.input-container{
     width: max-content;
     display: flex;
-    align-items: left;
-    float: right;
+    align-items: flex-start;
     padding: 14px;
-    border-radius: 28;
+    border-radius: 28px;
     background: #29d4a9;
 }
 

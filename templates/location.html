@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
-<head>
-  <link rel="stylesheet" href="style.css">
-</head>
-
 {% block body %}
-  <h1>Launch Sites</h1>
+
+  <link rel="stylesheet" href="style.css">
+
+  <div>
+    <input id="cardSearchInput" type="text" placeholder="Search...">
+  </div>
+
+    <h1>Launch Sites</h1>
     <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
       <p>All launch locations from 1960-70. Click on one for more information!</p>
     </div>
@@ -19,4 +22,26 @@
       </a>
     {% endfor %}
   </div>
+
+  <script>
+    let searchInput = document.getElementById('cardSearchInput');
+    let cardLinks = document.querySelectorAll('.main-location > a');
+
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function(event) {
+        let searchText = event.target.value.toLowerCase();
+
+        cardLinks.forEach(function(cardLink) {
+          let cardText = cardLink.innerText.toLowerCase();
+
+          if (cardText.includes(searchText)) {
+            cardLink.style.display = ""; // 
+          } else {
+            cardLink.style.display = "none"; //
+          }
+        });
+      });
+    }
+  </script>
+
 {% endblock body %}

@@ -8,6 +8,11 @@ body{
     background-image: url(test.jpg);
 }
 
+p.contents{
+    font-size: xx-small;
+    color: #FFB371;
+}
+
 .h1{
     font-size: 100px;
     background: #FF6852;

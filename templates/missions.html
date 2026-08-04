@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
-<head>
-  <link rel="stylesheet" href="style.css">
-</head>
-
 {% block body %}
+
+  <link rel="stylesheet" href="style.css">
+
+  <div class="input-container">
+      <input id="cardSearchInput" type="text" placeholder="Search...">
+  </div>
+
   <h1>Mission Log</h1>
   <p>All mission statistics from 1960-70. Click on one for more information!</p>
 
@@ -13,9 +16,30 @@
       <a href="{{ url_for('single_mission', id=mission.mission_ID) }}" style="display: block; text-decoration: none; color: inherit;">
         <div class="main-mission w3-card-4 w3-center w3-hover-shadow">
             <h3>{{ mission.name }}</h3>
-            </p>
         </div>
       </a>
     {% endfor %}
+  </div>
+
+  <script>
+    let searchInput = document.getElementById('cardSearchInput');
+    let cardLinks = document.querySelectorAll('.main-mission > a');
+
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function(event) {
+        let searchText = event.target.value.toLowerCase();
+
+        cardLinks.forEach(function(cardLink) {
+          let cardText = cardLink.innerText.toLowerCase();
+
+          if (cardText.includes(searchText)) {
+            cardLink.style.display = ""; // 
+          } else {
+            cardLink.style.display = "none"; //
+          }
+        });
+      });
+    }
+  </script>
 
 {% endblock body %}

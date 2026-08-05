@@ -13,11 +13,12 @@
       <p>All launch locations from 1960-70. Click on one for more information!</p>
     </div>
 
-  <div class="main-location w3-grid w3-animate-bottom" style= "display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+  <div class="main-location w3-grid w3-animate-bottom" style= "display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
     {% for location in locations %}
       <a href="{{ url_for('single_location', id=location.location_ID) }}" style="display: block; text-decoration: none; color: inherit;">
         <div class="main-location w3-card-4 w3-center w3-hover-shadow">
           <h3> {{ location.site }}</h3>
+          <p class="details"> {{ location.location_ID }} </p>
         </div>
       </a>
     {% endfor %}

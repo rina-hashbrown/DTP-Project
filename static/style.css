@@ -1,22 +1,27 @@
 body,h1,h2,h3,h4,h5,h6 {
     font-family: "Gloock", serif;
-    color:rgb(236, 85, 25);
+    color:rgb(239, 69, 13);
 }
 
-.body{
-    background-image: url(background.jpg);
+body {
+    background-image: url(images/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
-p.contents{
+
+p.contents, p.details{
     font-size: xx-small;
     color: #FFB371;
 }
 
-.h1{
+.h1 {
     font-size: 100px;
     background: #FF6852;
 }
 
-.space.w3-text{
+.space.w3-text {
     color: #000000;
 }
 
@@ -30,7 +35,7 @@ p.contents{
     background-color: #FFB371;
 }
 
-.main-rocket.w3-card-4{
+.main-rocket.w3-card-4 {
     width: 325px;
     height: 400px;
     border: 5px solid #FF6852;
@@ -90,3 +95,14 @@ p.contents{
     }
 }
 
+.main-location.w3-card-4{
+    background-image: linear-gradient(to bottom right, rgb(235, 117, 20), rgb(235, 119, 191));
+    border:5px #FF6852;
+    border-style: groove;
+    padding: 25px 10px;
+    gap: 20em;
+}
+
+.main-mission.w3-card-4{
+    background-image: linear-gradient(to bottom left, rgb(239, 128, 167), orange);
+}

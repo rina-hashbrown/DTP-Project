@@ -3,7 +3,7 @@ body,h1,h2,h3,h4,h5,h6 {
     color:rgb(239, 69, 13);
 }
 
-.main.container {  
+.unique-base-container {
     background-image: url(images/maybe.jpg);
     background-size: cover;
     background-position: center;
@@ -18,8 +18,6 @@ body,h1,h2,h3,h4,h5,h6 {
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background-image: url(images/merp.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -31,7 +29,7 @@ body {
   position: static;
   left: 0;
   bottom: 0;
-  width: 20%;
+  width: 100%;
   background-color: rgb(255, 157, 0);
   color: white;
   text-align: center;
@@ -83,7 +81,7 @@ p.contents, p.details{
 .input-container{
     width: max-content;
     display: flex;
-    align-items: flex-start;
+    align-items: left;
     padding: 14px;
     border-radius: 28px;
     background: #29d4a9;

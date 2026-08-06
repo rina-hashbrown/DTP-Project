@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import String, Text, Float, Column, select
 import sqlite3
+import subprocess
 
 # Create the app
 app = Flask(__name__)
@@ -19,6 +20,9 @@ db = SQLAlchemy(app)
 
 with app.app_context():
     db.reflect()
+
+proc = subprocess.Popen("php /path/to/your/contact.php", shell=True, stdout=subprocess.PIPE)
+script_response = proc.stdout.read()
 
 # From the default bind key
 class Rocket(db.Model):
@@ -50,6 +54,10 @@ def about():
 @app.route('/credits')
 def credits():
     return render_template('credits.html', results=None)
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', results=None)
 
 @app.route('/rockets')
 def get_rockets():

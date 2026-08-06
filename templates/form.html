@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+    {% block body %}
+        <form action="/submit" action="insertpeople.php" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+
+            <h2>Questions</h2>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest">
+                        First Name: <input class="w3-input w3-border" name="first_name" type="text" placeholder="First Name" value="{{ form_data.firstName if form_data }}">
+                        {% if errors and errors.firstNameErr %}
+                            <span class="w3-text-red">{{ errors.firstNameErr }}</span>
+                        {% endif %}
+                    </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest">
+                        Last Name: <input class="w3-input w3-border" type="text" name="last_name" placeholder="Last Name" value="{{ form_data.lastName if form_data }}">
+                        {% if errors and errors.lastNameErr %}
+                            <span class="w3-text-red">{{ errors.lastNameErr }}</span>
+                        {% endif %}
+                    </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest">
+                    Email: <input class="w3-input w3-border" type="text" name="email" placeholder="Email" value="{{ form_data.email if form_data }}">
+                        {% if errors and errors.emailErrr %}
+                            <span class="w3-text-red">{{ errors.emailErr }}</span>
+                        {% endif %}
+                    </div>
+            </div>
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
+                    <div class="w3-rest">
+                    Comment: <input class="w3-input w3-border" name="comment" type="text" placeholder="Comment" value="{{ form_data.comment if form_data}}">
+                        {% if errors and errors.commentErr %}
+                            <span class="w3-text-red">{{ errors.commentErr }}</span>
+                        {% endif %}
+                    </div>
+            </div>
+
+            <input type="submit" name="submit" value="Submit">  
+        </form>
+
+    {% endblock body%}

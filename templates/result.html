@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+    {% block body %}
+        <div class="w3-container w3-card-4 w3-light-grey w3-margin w3-padding">
+            <h2>Your Input:</h2>
+            <p><strong>First Name:</strong> {{ form_data.firstName }}</p>
+            <p><strong>Last Name:</strong> {{ form_data.lastName }}</p>
+            <p><strong>Email:</strong> {{ form_data.email }}</p>
+            <p><strong>Comment:</strong> {{ form_data.comment }}</p>
+            
+            <a href="/submit" class="w3-button w3-blue w3-margin-top">Submit Another Response</a>
+        </div>
+    {% endblock body %}

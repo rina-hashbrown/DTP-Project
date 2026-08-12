@@ -136,7 +136,7 @@ def submit_form():
             if not re.match(r"^[a-zA-Z\-' ]*$", form_data["lastName"]):
                 errors["lastNameErr"] = "Only letters and white space allowed"
 
-                # Validate the last name
+                # Validate the email
         email_input = request.form.get("email", "")
         if not email_input:
             errors["emailErr"] = "Email Address is Required"
@@ -153,9 +153,9 @@ def submit_form():
             form_data["comment"] = test_input(comment_input)
 
         if not any(errors.values()):
-                    return render_template("result.html", form_data=form_data)
+                    return render_template("form.html", form_data=form_data)
 
-    return render_template("form.html", errors=errors, form_data=form_data)
+    return render_template("result.html", errors=errors, form_data=form_data)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,43 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <title>Missions</title>
-</head>
-<body>
-   <nav class="w3-bar nav w3-container">
-        <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
-        <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
-        <a href="{{ url_for('get_locations') }}" class="w3-bar-item w3-button">Locations</a>
-        <a href="{{ url_for('get_joints') }}" class="w3-bar-item w3-button">Mission Overview</a>
-        <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Home</a>
-  </nav>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Missions</title>
+  </head>
+
+  <body id="nebula">
+    <nav class="w3-bar nav w3-container">
+          <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
+          <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
+          <a href="{{ url_for('get_locations') }}" class="w3-bar-item w3-button">Locations</a>
+          <a href="{{ url_for('get_joints') }}" class="w3-bar-item w3-button">Mission Overview</a>
+          <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Home</a>
+    </nav>
+  </body>
 </html>
 
 <link rel="stylesheet" href="style.css">
 
 {% block body %}
+  <div class="mission w3-panel w3-animate-zoom">
+    <h1 id="mission-title">Mission Log</h1>
+  </div>
+
+  <div class="mission-use w3-container">
+      <h2 id="Use-title">How to Use?</h2>
+      <button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-left-align">Click Here</button>
+      <div mission id="Demo1" class="w3-container w3-hide">
+        <p>These are all mission statistics from 1960-70. Click on one for more information, such as Mission status, price, company and date & time! Or search by these features using the Search Function!</p>
+    </div>
+  </div>
+  
+      <script>
+      function myFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else { 
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+    </script>
 
   <div class="input-container">
       <input id="cardSearchInput" type="text" placeholder="Search...">
   </div>
 
-  <h1>Mission Log</h1>
-  <p>All mission statistics from 1960-70. Click on one for more information!</p>
 
-  <div class="main-mission w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
+  <div class="main-mission w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
     {% for mission in missions %}
       <a href="{{ url_for('single_mission', id=mission.mission_ID) }}" style="display: block; text-decoration: none; color: inherit;">
         <div class="main-mission w3-card-4 w3-center w3-hover-shadow">
-            <h3>{{ mission.name }}</h3>
+            <h3 id="mheading">{{ mission.name }}</h3>
+            <p class="contents">{{ mission.id}} {{ mission.status}} {{ mission.time }} {{ mission.date }} {{ mission.company }}</p>
         </div>
       </a>
     {% endfor %}
   </div>
+
 
   <script>
     let searchInput = document.getElementById('cardSearchInput');

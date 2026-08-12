@@ -5,24 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 
 <link rel="stylesheet" href="style.css">
 
 {% block body %}
-  <div class="rocket-detail w3-container w3-animate-left" style="gap: 10px">
+  <div class="rocket-detail w3-container w3-animate-bottom" style="gap: 10px">
     <a href="{{ url_for('get_rockets') }}" class="back-btn">&larr; Back to Roster</a>
 
     <div class="card-wrapper">
       <div class="detail w3-card-4">
-        <h1>{{ rocket.rocket_name }}</h1>
-        <p><strong>Rocket ID:</strong> {{ rocket.rocket_ID }}</p>
-        <p><strong>Status:</strong> {{ rocket.rocket_status }}</p>
+        <h1 id="detail-name">{{ rocket.rocket_name }}</h1>
+        <p><strong>Rocket ID: {{ rocket.rocket_ID }} </strong></p>
+        <p><strong>Status: {{ rocket.rocket_status }}</strong></p>
       </div>
 
-      <div class="rocket w3-card-4">
-        <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
-      </div>
+        <div class="rocket w3-card-4">
+          <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
+        </div>
     </div>
   </div>
 {% endblock body %}

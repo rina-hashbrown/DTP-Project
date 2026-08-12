@@ -1,33 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <title>Rockets</title>
-</head>
+    <title>Rockets</title>
+  </head>
 
-<body>
-  <nav class="w3-bar nav w3-container">
-        <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
-        <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
-        <a href="{{ url_for('get_locations') }}" class="w3-bar-item w3-button">Locations</a>
-        <a href="{{ url_for('get_joints') }}" class="w3-bar-item w3-button">Mission Overview</a>
-        <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Home</a>
-  </nav>
-</body>
+  <body id="galaxy">
+    <nav class="w3-bar nav w3-container">
+          <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
+          <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
+          <a href="{{ url_for('get_locations') }}" class="w3-bar-item w3-button">Locations</a>
+          <a href="{{ url_for('get_joints') }}" class="w3-bar-item w3-button">Mission Overview</a>
+          <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Home</a>
+    </nav>
+  </body>
 </html>
 <link rel="stylesheet" href="style.css">
 
 {% block body %}
+  <div class="rocket w3-panel w3-animate-zoom">
+    <p>Rocket Roster</p>
+  </div>
+
+    <div class="rocket-use w3-container">
+      <h2 id="Use-title">How to Use?</h2>
+      <button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-left-align">Click Here</button>
+      <div rocket id="Demo1" class="w3-container w3-hide">
+        <p>Navigate this page by searching the Name, Status or ID Number of each rocket in the Space Bar, or get lost in scrolling!</p>
+      </div>
+    </div>
+
+    <script>
+      function myFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else { 
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+    </script>
+
   <div class="input-container">
       <input id="cardSearchInput" type="text" placeholder="Search...">
   </div>
 
-  <div class="w3-animate-left">
-    <h1>Rocket Roster</h1>
-  </div>
 
     <div class="main-rocket w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
       {% for rocket in rockets %}
@@ -37,11 +61,12 @@
             <p class="contents"> {{ rocket.rocket_ID }} {{ rocket.rocket_status }} </p>
             <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
           </div>
-        </a>
       {% endfor %}
+        </a>
     </div>
 
-    <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
+
+  <div class="rfooter w3-panel w3-border-top w3-border-bottom w3-border-orange">
     <p>All rockets from 1960-70.</p>
   </div>
 

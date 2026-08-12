@@ -1,6 +1,7 @@
-body,h1,h2,h3,h4,h5,h6 {
-    font-family: "Gloock", serif;
-    color:rgb(239, 69, 13);
+h1,h2,h3,h4,h5,h6,nav {
+    font-family: "Bungee Shade", sans-serif;
+    color:rgb(233, 77, 25);
+    font-weight: bold;
 }
 
 .unique-base-container {
@@ -25,6 +26,22 @@ body {
     background-attachment: fixed;
 }
 
+#galaxy {
+    background-image: url(images/rockbg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#nebula{
+    background-image: url(images/nebula.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
 .footer {
   position: static;
   left: 0;
@@ -36,19 +53,20 @@ body {
 }
 
 p.contents, p.details{
+    visibility: hidden;
     font-size: xx-small;
     color: #FFB371;
 }
 
 .h1 {
-    font-size: 100px;
-    background: #FF6852;
+    font-size: 300px;
+    background: #ff705b;
 }
 
-.space.w3-text {
-    color: #000000;
+.main-rocket.w3-grid, .main-mission.w3-grid {
+    margin-left: 50px;
+    Margin-right: 50px;
 }
-
 
 .nav.w3-container, .top-nav.w3-container {
     background-color:#fe6952;
@@ -62,26 +80,94 @@ p.contents, p.details{
 .main-rocket.w3-card-4 {
     width: 325px;
     height: 400px;
-    border: 5px solid #FF6852;
-    background-color: #FFB371;
-    margin-bottom: 25px;
+    border: 8px solid #FF6852;
+    background-color: #f8bb87;
+    margin-bottom: 50px;
     gap: 10em;
+    transition:transform.2s;
+    box-shadow: 10px 10px #e24807;
+}
+
+.main-rocket.w3-card-4:hover {
+    transform: scale(1.1);
+    background-color: #22ffa7;
 }
 
 .main-rocket.w3-card-4 img{
     width: 100%;
-    height: 75%;
+    height: 70%;
     object-fit: cover;
  }
 
-.rocket-detail-w3-grid{
-    background-color: rgb(246, 121, 38);
+.rocket.w3-panel {
+    background-image: url(images/panel.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 40px auto;
+    font-size: 80px;
+    font-family: "Bungee Shade", sans-serif;
+    background-color: #FF6852;
+    color:#fe6952;
+    font-weight: bolder;
+    max-width: 1200px; 
+    max-height: 180px;
+    padding: 60px 20px;
+    margin: 60px 50px 60px 50px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
- 
-.input-container{
+
+.mission.w3-panel{
+    background-image: url(images/mpanel.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 40px auto;
+    font-size: 100px;
+    font-family: "Bungee Shade", sans-serif;
+    background-color: #FF6852;
+    color:#fe6952;
+    font-weight: bolder;
+    max-width: 1200px; 
+    max-height: 180px;
+    padding: 60px 20px;
+    margin: 60px 50px 60px 50px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mission-title{
+    font-size: 80px;
+}
+
+.mission-use.w3-container{
+    background-image: url(images/use.jpg);
+    font-family: "Mali", cursive;
+    font-weight: 700;
+    font-style: normal;
+    font-size: medium;
+    margin: 60px 70px 40px 70px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+
+.input-container {
+    margin-bottom: 20px;
+    margin-left: 50px;
     width: max-content;
     display: flex;
-    align-items: left;
+    align-items: center;
     padding: 14px;
     border-radius: 28px;
     background: #29d4a9;
@@ -91,12 +177,38 @@ p.contents, p.details{
     font-size: 25px;
 }
 
+.rocket-use.w3-container {
+    background-color:hsl(19, 97%, 70%);
+    font-family: "Mali", cursive;
+    font-weight: 700;
+    font-style: normal;
+    font-size: medium;
+    margin: 60px 70px 40px 70px;
+}
+
+#Use-title{
+    color:#fc6610;
+}
+
+#Demo1 {
+    background-color: #98f6de;
+}
+
 .detail.w3-card-4{
+    background-color: #fa654f;
+    font-family: "Bungee Shade", sans-serif;
+    color:#f0efef;
+    font-size: larger;
     place-items: center;
     margin: auto;
 }
 
+#detail-name{
+    color:#f0efef;
+}
+
 .rocket.w3-card-4{
+  background-color: #ff6048;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,7 +231,11 @@ p.contents, p.details{
     }
 }
 
-.main-location.w3-card-4{
+.button {
+    color: #6ee2c5;
+}
+
+.main-location.w3-card-4 {
     background-image: linear-gradient(to bottom right, rgb(235, 117, 20), rgb(235, 119, 191));
     border:5px #FF6852;
     border-style: groove;
@@ -127,6 +243,36 @@ p.contents, p.details{
     gap: 20em;
 }
 
-.main-mission.w3-card-4{
-    background-image: linear-gradient(to bottom left, rgb(239, 128, 167), orange);
+.main-mission.w3-card-4 {
+    background-image: linear-gradient(to bottom left, rgb(246, 52, 120), rgb(249, 95, 18));
+    width: 300px;
+    height: 100px;
+    border: 8px solid #FF6852;
+    margin-bottom: 50px;
+    gap: 10em;
+    transition:transform.2s;
+    box-shadow: 10px 10px #e24807;
 }
+
+.main-mission.w3-card-4:hover {
+    transform: scale(1.1);
+    background-color: #22ffa7;
+}
+
+#mheading{
+    color: #f0efef;
+}
+
+#mission-title {
+    color:#f1662b;
+}
+
+.rfooter.w3-panel {
+    font-family: "Bungee Shade", sans-serif;
+    color:#98f6de;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 5px;
+    
+}
+

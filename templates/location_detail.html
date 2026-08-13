@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <title>Document</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <title>Location Details!</title>
 </head>
 
 <link rel="stylesheet" href="style.css">
@@ -15,8 +19,8 @@
     <a href="{{ url_for('get_locations') }}" class="back-btn">&larr; Back to Options</a>
 
     <div class="card-wrapper">
-        <div class="detail w3-card-4">
-            <h3> {{ location.site }}</h3>
+        <div class="ldetail w3-card-4">
+            <h3 id="lname"> {{ location.site }}</h3>
             <p><strong>Location ID:</strong> {{ location.location_ID}}</p>
             <p><strong>Site:</strong> {{ location.station }}</p>
     

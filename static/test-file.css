@@ -1,0 +1,9 @@
+.flip-card-front {
+  background-image: url("static/images/overview.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fce8c9; /* Fills outer space matching image background */
+  color: black;
+}
+

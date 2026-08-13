@@ -1,101 +1,7 @@
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,nav {
     font-family: "Bungee Shade", sans-serif;
     color:rgb(233, 77, 25);
     font-weight: bold;
-}
-
-
-p{
-    font-family: "Mali", cursive;
-    font-size: 20px;
-    font-weight: bolder;
-}
-
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
 }
 
 /*The Space Race title cover*/
@@ -195,7 +101,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    min-height: 100vh;
 }
 
 /*heading panel*/
@@ -214,7 +119,7 @@ body {
     max-width: 1200px; 
     max-height: 180px;
     padding: 60px 20px;
-    margin: 60px auto;
+    margin: 60px 50px 60px 50px;
     border-radius: 24px;
     display: flex;
     justify-content: center;
@@ -234,15 +139,13 @@ body {
 /*navigation color*/
 .nav.w3-container, .top-nav.w3-container {
     background-color:#fe6952;
-    color:#000000;
-    font-family: "Bungee Shade", sans-serif;
-    font-weight: bold;
-    font-size: 20px;
+    color:#1d362d;
 }
 
 /*grid centering for all pages*/
 .main-rocket.w3-grid, .main-mission.w3-grid, .main-location.w3-grid {
-    margin-left: 80px;
+    margin-left: 50px;
+    margin-right: 50px;
     box-sizing: border-box;
 }
 
@@ -299,7 +202,6 @@ body {
 }
 
 .card-wrapper {
-    margin: 50px auto;
     display: flex;
     gap: 20px;            
     align-items: stretch;
@@ -323,7 +225,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    min-height: 100vh;
 }
 
 /*mission heading panel*/
@@ -333,7 +234,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    margin: 50px auto;
+    margin: 40px auto;
     font-size: 100px;
     font-family: "Bungee Shade", sans-serif;
     background-color: #FF6852;
@@ -342,6 +243,7 @@ body {
     max-width: 1200px; 
     max-height: 180px;
     padding: 60px 20px;
+    margin: 60px 50px 60px 50px;
     border-radius: 24px;
     display: flex;
     justify-content: center;
@@ -355,7 +257,7 @@ body {
     font-weight: 700;
     font-style: normal;
     font-size: medium;
-    margin: 40px;
+    margin: 60px 70px 40px 70px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -398,6 +300,7 @@ body {
     font-size: 25px;
     font-weight: bolder;
     color: #000000;
+    margin-left: 150px;
     background-image: linear-gradient(to bottom right, rgb(243, 132, 52), rgb(69, 240, 146));
     border-style: solid;
     border-width: 5px;
@@ -405,7 +308,6 @@ body {
     text-align:center;
     max-width: 800px;
     height: 500px;
-    margin:50px auto;
 }
 
 .mark {
@@ -431,8 +333,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    min-height: 100vh;
-    width: 100%;
 }
 
 .location.w3-panel{
@@ -450,7 +350,7 @@ body {
     max-width: 1200px; 
     max-height: 180px;
     padding: 60px 20px;
-    margin: 60px auto;
+    margin: 60px 50px 60px 50px;
     border-radius: 24px;
     display: flex;
     justify-content: center;
@@ -502,7 +402,7 @@ body {
     font-size: 25px;
     font-weight: bolder;
     color: #000000;
-    margin: 50px auto;
+    margin-left: 150px;
     background-image: linear-gradient(to bottom right, rgb(243, 132, 52), rgb(255, 226, 112));
     border-style: solid;
     border-width: 5px;
@@ -548,16 +448,13 @@ body {
     max-width: 1200px; 
     max-height: 180px;
     padding: 60px 20px;
+    margin: 60px 50px 60px 50px;
     border-radius: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 60px auto;
 }
 
-#overview-title{
-    font-size: 80px;
-}
 .main-joint {
     display: flex;
     flex-direction: row;
@@ -581,7 +478,7 @@ body {
 }
 
 .oheading {
-    padding-top: 200px;
+    padding-top: 120px;
     color: #000000;
 }
 
@@ -593,6 +490,7 @@ body {
     font-weight: bolder;
     color: #000000;
 }
+
 .flip-card {
     flex: 1 1 calc(33.333% - 20px); /* Creates 3 equal columns */
     max-width: 380px;               /* Keeps cards from getting ridiculously huge on ultra-wide screens */
@@ -626,6 +524,11 @@ body {
   border-radius: 8px;
 }
 
+.flip-card-front img {
+  object-fit: cover;
+  border-radius: 4px;
+}
+
 .flip-card-front {
 background-image: url("images/overview.jpg");
   background-size: contain;      /* Zooms out to fit the whole graphic */
@@ -633,8 +536,6 @@ background-image: url("images/overview.jpg");
   background-repeat: no-repeat;  /* Prevents tiling */
   padding: 0;                    /* Removes padding that clips background bounds */
   box-sizing: border-box;
-  border: 10px solid #e24807;
-
 }
 
 /* Style the back side */

@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <title>Missions</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <title>Missions</title>
   </head>
 
   <body id="nebula">
@@ -53,18 +53,20 @@
       <input id="cardSearchInput" type="text" placeholder="Search...">
   </div>
 
-
   <div class="main-mission w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
     {% for mission in missions %}
       <a href="{{ url_for('single_mission', id=mission.mission_ID) }}" style="display: block; text-decoration: none; color: inherit;">
         <div class="main-mission w3-card-4 w3-center w3-hover-shadow">
             <h3 id="mheading">{{ mission.name }}</h3>
-            <p class="contents">{{ mission.id}} {{ mission.status}} {{ mission.time }} {{ mission.date }} {{ mission.company }}</p>
+            <p class="contents"> {{ mission.mission_ID }} {{ mission.status }} {{ mission.time }} {{ mission.date }} {{ mission.company }}</p>
         </div>
       </a>
     {% endfor %}
   </div>
 
+  <div class="mfooter w3-panel w3-border-top w3-border-bottom w3-border-orange">
+    <p>All missions from 1960-70.</p>
+  </div>
 
   <script>
     let searchInput = document.getElementById('cardSearchInput');
@@ -75,7 +77,7 @@
         let searchText = event.target.value.toLowerCase();
 
         cardLinks.forEach(function(cardLink) {
-          let cardText = cardLink.innerText.toLowerCase();
+          let cardText = cardLink.textContent.toLowerCase();
 
           if (cardText.includes(searchText)) {
             cardLink.style.display = ""; // 

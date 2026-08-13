@@ -1,41 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <title>Locations</title>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Locations</title>
+  </head>
 
-<body>
-  <nav class="w3-bar nav w3-container">
-        <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
-        <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
-        <a href="{{ url_for('get_locations') }}" class="w3-bar-item w3-button">Locations</a>
-        <a href="{{ url_for('get_joints') }}" class="w3-bar-item w3-button">Mission Overview</a>
-        <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Home</a>
-  </nav>
-</body>
+  <body id="stars">
+    <nav class="w3-bar nav w3-container">
+          <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
+          <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
+          <a href="{{ url_for('get_locations') }}" class="w3-bar-item w3-button">Locations</a>
+          <a href="{{ url_for('get_joints') }}" class="w3-bar-item w3-button">Mission Overview</a>
+          <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Home</a>
+    </nav>
+  </body>
+</html>
+
+<link rel="stylesheet" href="style.css">
+
 {% block body %}
 
-  <link rel="stylesheet" href="style.css">
+  <div class="location w3-panel w3-animate-zoom">
+    <h1 id="location-title">Launch Locations</h1>
+  </div>
+
+   <div class="location-use w3-container">
+      <h2 id="Use-title">How to Use?</h2>
+      <button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-left-align">Click Here</button>
+      <div mission id="Demo1" class="w3-container w3-hide">
+        <p>These are all unique site statistics from different locations around the world that were key players in the Space Race! Click on one for more information, such as Location Site, State & Region respectfully or Country! Or search by these features using the Search Function!</p>
+    </div>
+  </div>
+  
+      <script>
+      function myFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else { 
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+    </script>
+
 
   <div class="input-container">
     <input id="cardSearchInput" type="text" placeholder="Search...">
   </div>
 
-    <h1>Launch Sites</h1>
-    <div class="w3-panel w3-border-top w3-border-bottom w3-border-green">
-      <p>All launch locations from 1960-70. Click on one for more information!</p>
-    </div>
-
   <div class="main-location w3-grid w3-animate-bottom" style= "display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
     {% for location in locations %}
       <a href="{{ url_for('single_location', id=location.location_ID) }}" style="display: block; text-decoration: none; color: inherit;">
         <div class="main-location w3-card-4 w3-center w3-hover-shadow">
-          <h3> {{ location.site }}</h3>
-          <p class="details"> {{ location.location_ID }} </p>
+          <h3 id="lheading">{{ location.site }}</h3>
+          <p class="contents">{{ location.location_ID }} {{ location.station }} {{ location.state }} {{ location.region }} {{ location.country }}</p>
         </div>
       </a>
     {% endfor %}
@@ -50,7 +75,7 @@
         let searchText = event.target.value.toLowerCase();
 
         cardLinks.forEach(function(cardLink) {
-          let cardText = cardLink.innerText.toLowerCase();
+          let cardText = cardLink.textContent.toLowerCase();
 
           if (cardText.includes(searchText)) {
             cardLink.style.display = ""; // 

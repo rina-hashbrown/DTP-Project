@@ -79,7 +79,7 @@
         let searchText = event.target.value.toLowerCase();
 
         cardLinks.forEach(function(cardLink) {
-          let cardText = cardLink.innerText.toLowerCase();
+          let cardText = cardLink.textContent.toLowerCase();
 
           if (cardText.includes(searchText)) {
             cardLink.style.display = ""; // 

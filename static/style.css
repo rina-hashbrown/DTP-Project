@@ -1,19 +1,36 @@
+
+/* Defines headings styling using the Bungee Shade font */
 h1,h2,h3,h4,h5,h6 {
     font-family: "Bungee Shade", sans-serif;
     color:rgb(233, 77, 25);
     font-weight: bold;
 }
 
-
+/* Defines default paragraph text using the Mali font */
 p{
     font-family: "Mali", cursive;
     font-size: 20px;
     font-weight: bolder;
 }
 
+/* Universal reset ensuring padding and border are included in element widths */
 * {box-sizing:border-box}
 
-/* Slideshow container */
+/* Overall page background setting for default and main home page */
+body {
+    background-image: url(images/merp.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+/* 
+   SLIDESHOW COMPONENTS
+*/
+
+/* Outer boundary container for the image slideshow */
 .slideshow-container {
   max-width: 2000px;
   max-height: 400px;
@@ -21,12 +38,13 @@ p{
   margin: auto;
 }
 
-/* Hide the images by default */
+/* Individual slide wrapper - hidden by default for JavaScript toggling */
 .mySlides {
   display: none;
   position: relative;
 }
 
+/* Ensures images inside slides stretch fully to fit the slideshow frame */
 .mySlides img{
     width: 100%;
     height: 400px;
@@ -34,7 +52,7 @@ p{
     object-position: center;
 }
 
-/* Next & previous buttons */
+/* Previous and Next navigation arrow button base styles */
 .prev, .next {
   cursor: pointer;
   z-index: 10;
@@ -52,18 +70,18 @@ p{
   user-select: none;
 }
 
-/* Position the "next button" to the right */
+/* Positions the Next button explicitly to the right end */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
+/* Darkens background color when hovering over slideshow navigation arrows */
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
 
-/* Caption text */
+/* Overlay caption text box positioned over a slide */
 .text {
   color: #000000;
   font-size: 20px;
@@ -79,7 +97,7 @@ p{
   text-align: center;
 }
 
-/* Number text (1/3 etc) */
+/* Small slide count indicator (e.g., "1/3") positioned top-left */
 .numbertext {
   color: #000000;
   font-size: 12px;
@@ -87,7 +105,8 @@ p{
   position: absolute;
   top: 0;
 }
-/* The dots/bullets/indicators */
+
+/* Dot navigation indicators below the slideshow */
 .dot {
   cursor: pointer;
   height: 15px;
@@ -99,22 +118,70 @@ p{
   transition: background-color 0.6s ease;
 }
 
+/* Highlight state for the currently active dot or on hover */
 .active, .dot:hover {
   background-color: #8e0707;
 }
 
-/* Fading animation */
+/* Keyframe animation trigger class for fading slides in */
 .fade {
   animation-name: fade;
   animation-duration: 1.0s;
 }
 
+/* Keyframe definition for smooth opacity transition */
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
 }
 
-/*The Space Race title cover*/
+
+/* 
+   NAVIGATION & SEARCH COMPONENTS
+*/
+
+/* Universal top navigation bar container background and text layout */
+.nav.w3-container, .top-nav.w3-container {
+    background-color:#fe6952;
+    color:#000000;
+    font-family: "Bungee Shade", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Search bar wrapper present across all site pages */
+.input-container {
+    margin-bottom: 20px;
+    margin-left: 50px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    border-radius: 28px;
+    background: #29d4a9;
+}
+
+/* Back navigation button design for detail pages */
+.back-btn {
+    font-family: "Bungee Shade", sans-serif;
+    color: rgb(246, 140, 41);
+}
+
+/* Specific highlight color modifier for site UI elements */
+#Demo1{
+    background-color: #3af7ab;
+}
+
+#Use-title{
+    color:#fc3710;
+}
+
+
+/* 
+   HOME & GENERAL SECTION STYLES
+*/
+
+/* Full-width banner cover image for "The Space Race" title */
 .unique-base-container {
     background-image: url(images/maybe.jpg);
     background-size: cover;
@@ -129,28 +196,17 @@ p{
     margin-right: -50vw;
 }
 
-/*Home Page Background and default bg*/
-body {
-    background-image: url(images/merp.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
-
+/* Orange gradient panel used in the About section */
 .about.w3-panel {
     background-image: linear-gradient(to bottom right, rgb(242, 127, 45), rgb(255, 215, 13));
 }
 
+/* Secondary gradient panel variation for About section */
 .about2.w3-panel {
     background-image: linear-gradient(to bottom right, rgb(253, 211, 193), rgb(255, 68, 0));;
 }
-/*individual pages back button*/
-.back-btn {
-    font-family: "Bungee Shade", sans-serif;
-    color: rgb(246, 140, 41);
-}
 
+/* Credits block container with custom border and retro shadow effect */
 .credits.w3-container {
     width: 1200px;
     height: 500px;
@@ -161,50 +217,13 @@ body {
     box-shadow: 10px 10px #17bd91;
 }
 
-/*use bar highlight color*/
-#Demo1{
-    background-color: #3af7ab;
+/* Utility layout helper to center CSS grids on content pages */
+.main-rocket.w3-grid, .main-mission.w3-grid, .main-location.w3-grid {
+    margin-left: 80px;
+    box-sizing: border-box;
 }
 
-#Use-title{
-    color:#fc3710;
-}
-
-/*overall search bar for all pages*/
-.input-container {
-    margin-bottom: 20px;
-    margin-left: 50px;
-    width: max-content;
-    display: flex;
-    align-items: center;
-    padding: 14px;
-    border-radius: 28px;
-    background: #29d4a9;
-}
-
-
-/*footer style*/
-.rfooter.w3-panel, .mfooter.w3-panel {
-    font-family: "Bungee Shade", sans-serif;
-    color:#98f6de;
-    font-weight: bold;
-    border-style: solid;
-    border-width: 5px;
-}
-
-/*fixed footer on all pages design*/
-.footer {
-  position: static;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: rgb(255, 157, 0);
-  color: white;
-  text-align: center;
-}
-
-
-/*hidden contents of all pages*/
+/* Visually hides accessibility content or off-screen elements */
 .contents {
   opacity: 0;
   font-size: 0;
@@ -221,7 +240,12 @@ body {
     background: #ff705b;
 }
 
-/*rocket page background*/
+
+/* 
+   ROCKETS PAGE STYLES
+*/
+
+/* Background wrapper for the Rockets subpage */
 #galaxy {
     background-image: url(images/rockbg.jpg);
     background-size: cover;
@@ -231,13 +255,14 @@ body {
     min-height: 100vh;
 }
 
+/* Oversized heading text style for the Rocket page header */
 #rocket {
     font-family: "Bungee Shade", sans-serif;
     font-size: 80px;
     font-weight: bolder;
 }
 
-/*heading panel*/
+/* Image-backed title banner container for Rockets */
 .rocket.w3-panel {
     background-image: url(images/panel.jpg);
     background-size: cover;
@@ -257,7 +282,7 @@ body {
     align-items: center;
 }
 
-/*how to container for rocket page*/
+/* "How-to / Usage" instructional container for Rockets */
 .rocket-use.w3-container {
     background-image: url(images/use.jpg);
     font-family: "Mali", cursive;
@@ -267,22 +292,7 @@ body {
     margin: 60px 70px 40px 70px;
 }
 
-/*navigation color*/
-.nav.w3-container, .top-nav.w3-container {
-    background-color:#fe6952;
-    color:#000000;
-    font-family: "Bungee Shade", sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-/*grid centering for all pages*/
-.main-rocket.w3-grid, .main-mission.w3-grid, .main-location.w3-grid {
-    margin-left: 80px;
-    box-sizing: border-box;
-}
-
-/*individual card for rocket*/
+/* Individual preview card for rockets on the main grid listing */
 .main-rocket.w3-card-4 {
     width: 325px;
     height: 400px;
@@ -290,28 +300,29 @@ body {
     background-color: #f8bb87;
     margin-bottom: 50px;
     gap: 10em;
-    transition:transform.2s;
+    transition:transform .2s;
     box-shadow: 10px 10px #e24807;
 }
 
+/* Zoom/color change animation when hovering over a rocket card */
 .main-rocket.w3-card-4:hover {
     transform: scale(1.1);
     background-color: #22ffa7;
 }
 
+/* Image scaling inside rocket card containers */
 .main-rocket.w3-card-4 img{
     width: 100%;
     height: 70%;
     object-fit: cover;
  }
 
-
-/*each card individual page picture*/
+/* Individual rocket detail view page background */
 .rocket-detail.w3-container {
     background-image: url(images/rockbg.jpg);
 }
 
-/*rocket individual card text*/
+/* Card details container for single rocket display */
 .detail.w3-card-4{
     background-color: #ffaa64;
     font-family: "Bungee Shade", sans-serif;
@@ -325,7 +336,7 @@ body {
     color:#170000;
 }
 
-/*rocket individual card color*/
+/* Flexible content card used on rocket detail pages */
 .rocket.w3-card-4{
   background-color: #ffaa64;
   display: flex;
@@ -334,6 +345,7 @@ body {
   width: 40%;
 }
 
+/* Side-by-side flexible wrapper for detail cards */
 .card-wrapper {
     margin: 50px auto;
     display: flex;
@@ -341,18 +353,24 @@ body {
     align-items: stretch;
 }
 
+/* Flex distribution for direct child elements in card-wrapper */
 .card-wrapper > div {
     flex: 1;
 }
 
-/* flex for all viewing types*/
+/* Responsive breakpoint: stacks detail card layout vertically on mobile screens */
 @media (max-width: 600px) {
     .card-wrapper {
         flex-direction: column;
     }
 }
 
-/*missions page background*/
+
+/* 
+   MISSIONS PAGE STYLES
+*/
+
+/* Nebula background setting for the Missions subpage */
 #nebula{
     background-image: url(images/nebula.jpg);
     background-size: cover;
@@ -362,7 +380,7 @@ body {
     min-height: 100vh;
 }
 
-/*mission heading panel*/
+/* Top header title banner for Missions page */
 .mission.w3-panel{
     background-image: url(images/mpanel.jpg);
     background-size: cover;
@@ -384,7 +402,7 @@ body {
     align-items: center;
 }
 
-/*how to for mission*/
+/* Instruction banner explaining Missions page functionality */
 .mission-use.w3-container{
     background-image: url(images/use.jpg);
     font-family: "Mali", cursive;
@@ -400,9 +418,10 @@ body {
 
 #mission-title{
     font-size: 80px;
+    color:#e73e18;
 }
 
-/*main mission individual card*/
+/* Card representation for individual mission listings */
 .main-mission.w3-card-4 {
     background-image: linear-gradient(to bottom left, rgb(246, 52, 120), rgb(249, 95, 18));
     width: 300px;
@@ -410,16 +429,18 @@ body {
     border: 8px solid #FF6852;
     margin-bottom: 50px;
     gap: 20em;
-    transition:transform.2s;
+    transition:transform .2s;
     box-shadow: 10px 10px #e24807;
 }
+
+/* Hover effect for mission cards */
 .main-mission.w3-card-4:hover {
     background-image: none;
     background-color: #77dcb4;
     transform: scale(1.1);
 }
 
-/*each individual card mission page picture*/
+/* Background layout for single mission view pages */
 .mission-detail.w3-container {
     background-image: url(images/nebula.jpg);
     background-size: cover;
@@ -428,7 +449,7 @@ body {
     background-attachment: fixed;
 }
 
-/*mission individual pages details*/
+/* Full details view panel on individual mission pages */
 .mdetail.w3-card-4 {
     font-family: "Bungee Shade", sans-serif;
     font-size: 25px;
@@ -457,10 +478,12 @@ body {
     color: #f0efef;
 }
 
-#mission-title {
-    color:#e73e18;
-}
 
+/* 
+   LOCATIONS PAGE STYLES
+*/
+
+/* Starry space background wrapper for Locations subpage */
 #stars {
     background-image: url(images/stars.jpg);
     background-size: cover;
@@ -471,6 +494,7 @@ body {
     width: 100%;
 }
 
+/* Header panel container for the Locations page header */
 .location.w3-panel{
     background-image: url(images/lpanel.jpg);
     background-size: cover;
@@ -493,6 +517,7 @@ body {
     align-items: center;
 }
 
+/* Instructional container box for Locations */
 .location-use.w3-container{
     background-image: url(images/use.jpg);
     font-family: "Mali", cursive;
@@ -506,6 +531,7 @@ body {
     background-attachment: fixed;
 }
 
+/* Grid card for individual location selection */
 .main-location.w3-card-4 {
     background-image: linear-gradient(to bottom right, rgb(235, 117, 20), rgb(235, 119, 191));
     padding: 25px 10px;
@@ -514,16 +540,18 @@ body {
     height: 125px;
     border: 8px solid #ff8572;
     margin-bottom: 50px;
-    transition:transform.2s;
+    transition:transform .2s;
     box-shadow: 10px 10px #e24807;
 }
 
+/* Hover state transformation for location cards */
 .main-location.w3-card-4:hover {
     background-image: none;
     background-color: #77dcb4;
     transform: scale(1.1);
 }
 
+/* Single location view page background container */
 .location-detail.w3-container {
     background-image: url(images/stars.jpg);
     background-size: cover;
@@ -532,7 +560,7 @@ body {
     background-attachment: fixed;
 }
 
-/*mission individual pages details*/
+/* Detailed information display card for individual locations */
 .ldetail.w3-card-4 {
     font-family: "Bungee Shade", sans-serif;
     font-size: 25px;
@@ -562,6 +590,12 @@ body {
     font-size: 70px;
 }
 
+
+/* 
+   OVERVIEW PAGE & INTERACTIVE FLIP CARDS
+*/
+
+/* Background theme wrapper for Overview section */
 #purple {
     background-image: url(images/purple.jpg);
     background-size: cover;
@@ -570,6 +604,7 @@ body {
     background-attachment: fixed;
 }
 
+/* Main banner title panel for Overview page */
 .overview.w3-panel{
     background-image: url(images/opanel.jpg);
     background-size: cover;
@@ -594,6 +629,8 @@ body {
 #overview-title{
     font-size: 80px;
 }
+
+/* Flexbox layout container positioning overview joint elements side-by-side */
 .main-joint {
     display: flex;
     flex-direction: row;
@@ -605,7 +642,7 @@ body {
     box-sizing: border-box;
 }
 
-
+/* Individual card styling inside joint section */
 .main-joint.w3-card-4 {
     background-image: linear-gradient(to bottom right, rgb(250, 44, 89), rgb(247, 31, 31));
     padding: 25px 10px;
@@ -621,6 +658,7 @@ body {
     color: #000000;
 }
 
+/* Typography settings for overview info blocks */
 .information {
     padding-top: 20px;
     align-items: center;
@@ -629,6 +667,8 @@ body {
     font-weight: bolder;
     color: #000000;
 }
+
+/* Outer card frame providing 3D perspective space for flipping animation */
 .flip-card {
     flex: 1 1 calc(33.333% - 20px); /* Creates 3 equal columns */
     max-width: 380px;               /* Keeps cards from getting ridiculously huge on ultra-wide screens */
@@ -637,7 +677,7 @@ body {
     perspective: 1000px;
 }
 
-/* This container is needed to position the front and back side */
+/* Inner flippable container holding front and back faces */
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -647,35 +687,60 @@ body {
   transform-style: preserve-3d;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
+/* Triggers 180-degree horizontal rotation on hover */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
-/* Position the front and back side */
+/* Shared positioning rules hiding backfaces during flip transition */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden; /* Safari support */
   backface-visibility: hidden;
   border-radius: 8px;
 }
 
+/* Front side styling for the interactive flip card */
 .flip-card-front {
-background-image: url("images/overview.jpg");
+  background-image: url("images/overview.jpg");
   background-size: contain;      /* Zooms out to fit the whole graphic */
-  background-position: center;   /* Centers the circle inside the card */
+  background-position: center;   /* Centers the graphic inside the card */
   background-repeat: no-repeat;  /* Prevents tiling */
   padding: 0;                    /* Removes padding that clips background bounds */
   box-sizing: border-box;
   border: 10px solid #e24807;
-
 }
 
-/* Style the back side */
+/* Hidden back side styling, pre-rotated to show correctly after flipping */
 .flip-card-back {
   background-image: linear-gradient(to bottom right, rgb(254, 85, 122), rgb(239, 83, 83));
   color: white;
   transform: rotateY(180deg);
+}
+
+
+/* 
+   FOOTER STYLES
+*/
+
+/* Sub-page section footer panel with custom border */
+.rfooter.w3-panel, .mfooter.w3-panel {
+    font-family: "Bungee Shade", sans-serif;
+    color:#98f6de;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 5px;
+}
+
+/* Global page footer sticky/bottom element styling */
+.footer {
+  position: static;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(255, 157, 0);
+  color: white;
+  text-align: center;
 }

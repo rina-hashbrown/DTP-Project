@@ -1,44 +1,86 @@
+<!-- TEMPLATE INHERITANCE: Inherits structural HTML, HEAD metadata, and navigation bars from base.html -->
 {% extends "base.html" %}
 
-    {% block body %}
-      <title>Outerspace Project</title>
+<!-- JINJA TEMPLATE BLOCK: Injects the dynamic About page content into base.html's {% block body %} -->
+{% block body %}
 
-      <div class="w3-panel w3-center w3-amber">
-        <h2>An Outerspace Project</h2>
-        <p>This archive website was created as a student let mission where all people can access information about the famous 1960’s -70’s mission to reach the moon. </p>
-      </div>
-      <div class="w3-panel w3-magin-top w3-pale-blue">
-        <h1>Tell Me More!</h1>
-        <p>After World War II, the United States and the Soviet Union (USSR) began a clash dubbed as the Cold War. Uniquely, this was untraditional in the sense their rivalry was waged on other fronts than battle, including cultural, technological, military and political areas. The Space Race was an extension of the cold war that began as an arms race, during the front-end many wins went to the Soviet Union, therefore retaliation arrived in the form of President Kennedy’s goal in 1961 to be the first country to step foot on the moon. The rockets that initiated the space age were originally missile launchers for WWII, the investment to develop rockets became the key technologies that determined each country's success.</p>
-     </div>
-     <div class="w3-panel w3-margin-top w3-amber">
-        <p>On April 12, 1961, the U.S.S.R. launched the first human into orbit, Yuri Gagarin, on Vostok 1.</p>
-        <p>On February 20, 1962, John Glenn, on Mercury-Atlas 6, became the first American in orbit.</p>
+  <!-- PAGE TITLE: Overrides default page title in base head -->
+  <title>Outerspace Project</title>
 
-          <p>Between June 16 and June 19, 1963, Valentina Tereshkova, on Vostok 6, became the first woman in space.</p>
+  <!-- SECTION 1: PROJECT OVERVIEW -->
+  <!-- Header callout container centered using W3.CSS layout utilities -->
+  <div class="about2 w3-panel w3-center">
+    <h2>An Outerspace Project</h2>
+    <p>
+      This archive website was created as a student let mission where all people 
+      can access information about the famous 1960’s -70’s mission to reach the moon.
+    </p>
+  </div>
 
-          <p>October 12, 1964, the U.S.S.R. launched the first multi-person spacecraft, Voskhod 1, with cosmonauts Vladimir Komarov, Konstantin Feoktistov, and Boris Yegorov.</p>
+  <!-- SECTION 2: HISTORICAL CONTEXT -->
+  <!-- Contextual background panel covering Cold War origins and Space Race background -->
+  <div class="about w3-panel w3-margin-top">
+    <h1>Tell Me More!</h1>
+    <p>
+      After World War II, the United States and the Soviet Union (USSR) began a clash dubbed as 
+      the Cold War. Uniquely, this was untraditional in the sense their rivalry was waged on other 
+      fronts than battle, including cultural, technological, military and political areas. The Space 
+      Race was an extension of the cold war that began as an arms race, during the front-end many wins 
+      went to the Soviet Union, therefore retaliation arrived in the form of President Kennedy’s goal 
+      in 1961 to be the first country to step foot on the moon. The rockets that initiated the space 
+      age were originally missile launchers for WWII, the investment to develop rockets became the key 
+      technologies that determined each country's success.
+    </p>
+  </div>
 
-          <p>On March 18, 1965, the first space walk was performed, by Aleksei Leonov on Voskhod 2.</p>
+  <!-- SECTION 3: SPACE RACE CHRONOLOGICAL TIMELINE -->
+  <!-- Timeline panel featuring key milestones from 1961 to 1969 -->
+  <div class="about2 w3-panel w3-margin-top">
+    <!-- Milestone: First Human in Orbit -->
+    <p>On April 12, 1961, the U.S.S.R. launched the first human into orbit, Yuri Gagarin, on Vostok 1.</p>
+    
+    <!-- Milestone: First American in Orbit -->
+    <p>On February 20, 1962, John Glenn, on Mercury-Atlas 6, became the first American in orbit.</p>
 
-          <p>On March 23, 1965, the U.S. launched the first multi-person U.S. spacecraft, Gemini 3, with Virgil Grissom and John Young.</p>
+    <!-- Milestone: First Woman in Space -->
+    <p>Between June 16 and June 19, 1963, Valentina Tereshkova, on Vostok 6, became the first woman in space.</p>
 
-          <p>On June 3, 1965, the first American space walk was completed by Ed White on Gemini 4.</p>
+    <!-- Milestone: First Multi-Person Spacecraft -->
+    <p>October 12, 1964, the U.S.S.R. launched the first multi-person spacecraft, Voskhod 1, with cosmonauts Vladimir Komarov, Konstantin Feoktistov, and Boris Yegorov.</p>
 
-          <p>On March 16, 1966, the first docking in space took place. Neil Armstrong and David Scott on Gemini 8 docked with an Agena target.</p>
+    <!-- Milestone: First Spacewalk -->
+    <p>On March 18, 1965, the first space walk was performed, by Aleksei Leonov on Voskhod 2.</p>
 
-          <p>On January 27, 1967, astronauts Virgil Grissom, Ed White, and Roger Chaffee were killed in a fire during a launchpad test. The Apollo program was delayed for a year and a half.</p>
+    <!-- Milestone: First US Multi-Person Spacecraft -->
+    <p>On March 23, 1965, the U.S. launched the first multi-person U.S. spacecraft, Gemini 3, with Virgil Grissom and John Young.</p>
 
-          <p>On April 23, 1967, cosmonaut Vladimir Komarov, on Soyuz 1, became the first spaceflight fatality.</p>
+    <!-- Milestone: First US Spacewalk -->
+    <p>On June 3, 1965, the first American space walk was completed by Ed White on Gemini 4.</p>
 
-          <p>Between September 14 and 21, 1968, the uncrewed Soviet probe Zond 5 became the first spacecraft to fly around the Moon and return to Earth.</p>
+    <!-- Milestone: First Space Docking -->
+    <p>On March 16, 1966, the first docking in space took place. Neil Armstrong and David Scott on Gemini 8 docked with an Agena target.</p>
 
-          <p>July 3, 1969, marked the explosion of the Soviet N1 Moon rocket.</p>
+    <!-- Milestone: Apollo 1 Tragedy -->
+    <p>On January 27, 1967, astronauts Virgil Grissom, Ed White, and Roger Chaffee were killed in a fire during a launchpad test. The Apollo program was delayed for a year and a half.</p>
 
-           <p>On July 20, 1969, the first humans landed on the Moon: Neil Armstrong and Buzz Aldrin on Apollo 11.</p>
-      </div>
-      <div class="w3-panel w3-margin-top w3-amber">
-        <h1>About the Creator</h1>
-        <p>This is a school project made for grade submission originating in NZ.</p>
-      </div>
-    {% endblock body %}
+    <!-- Milestone: First Spaceflight Fatality -->
+    <p>On April 23, 1967, cosmonaut Vladimir Komarov, on Soyuz 1, became the first spaceflight fatality.</p>
+
+    <!-- Milestone: First Moon Orbit and Return -->
+    <p>Between September 14 and 21, 1968, the uncrewed Soviet probe Zond 5 became the first spacecraft to fly around the Moon and return to Earth.</p>
+
+    <!-- Milestone: Soviet N1 Explosion -->
+    <p>July 3, 1969, marked the explosion of the Soviet N1 Moon rocket.</p>
+
+    <!-- Milestone: First Human Moon Landing -->
+    <p>On July 20, 1969, the first humans landed on the Moon: Neil Armstrong and Buzz Aldrin on Apollo 11.</p>
+  </div>
+
+  <!-- SECTION 4: CREATOR INFORMATION -->
+  <!-- Footer section detailing creator background and project context -->
+  <div class="about w3-panel w3-margin-top">
+    <h1>About the Creator</h1>
+    <p>This is a school project made for grade submission originating in NZ.</p>
+  </div>
+
+{% endblock body %}

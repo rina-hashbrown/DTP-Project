@@ -1,39 +1,127 @@
+<!-- TEMPLATE INHERITANCE: Inherits structural HTML, head metadata, and navbar from base.html -->
 {% extends "base.html" %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+<!-- JINJA TEMPLATE BLOCK: Injects home page content into the base template's 'body' block -->
 {% block body %}
-<div class="slideshow-container">
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 2</div>
-      <img src="{{ url_for('static', filename='images/pls.jpg') }}" style="width:100%">
+
+  <!-- Flask Static Asset Link: Loads page-specific stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- SLIDESHOW CONTAINER: Wrapper for slides, controls, and dynamic images -->
+  <div class="slideshow-container">
+    
+    <!-- SLIDE 1: JFK Quote Slide -->
+    <div class="mySlides fade">
+      <!-- Slide Counter Indicator -->
+      <div class="numbertext">1 / 2</div>
+      <!-- Dynamic Static Image Link via Flask url_for -->
+      <img src="{{ url_for('static', filename='images/pls.jpg') }}" style="width:100%" alt="Space Race Hero Image">
+      
+      <!-- Slide Text Content overlay -->
       <div class="text">
         <h1>“For the eyes of the world now look into space, to the Moon, and to the planets beyond.”</h1>
         <p>Speaker: President John F. Kennedy, Event: Address to Congress on Urgent National Needs, 1961</p>
       </div>
-  </div>
-  
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 2</div>
-      <div class="text"><p>Welcome to the Space Race Archive! This is a database that collects all rockets, missions and locations present in the famous 1960’s-70’s battle to the moon. Not only can you see the famous American statistics, the competitive Soviet Union’s marvels are recorded as well. To learn more about what exactly the Space Race is and famous events, click the ‘About’ page.</p></div>
-     <img src="{{ url_for('static', filename='images/pls.jpg') }}" style="width:100%">
     </div>
-  </div>
+    
+    <!-- SLIDE 2: Archive Welcome & Intro Slide -->
+    <div class="mySlides fade">
+      <!-- Slide Counter Indicator -->
+      <div class="numbertext">2 / 2</div>
+      <div class="text">
+        <p>Welcome to the Space Race Archive! This is a database that collects all rockets, missions and locations present in the famous 1960’s-70’s battle to the moon. Not only can you see the famous American statistics, the competitive Soviet Union’s marvels are recorded as well. To learn more about what exactly the Space Race is and famous events, click the ‘About’ page.</p>
+      </div>
+      <!-- Dynamic Static Image Link via Flask url_for -->
+      <img src="{{ url_for('static', filename='images/pls.jpg') }}" style="width:100%" alt="Space Race Archive Banner">
+    </div>
 
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  </div>
+    <!-- PREVIOUS / NEXT SLIDE CONTROLS: Triggers JavaScript plusSlides() function on click -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div> <!-- End of .slideshow-container -->
+
   <br>
 
-  <!-- The dots/circles -->
+  <!-- SLIDE DOT INDICATORS: Navigation circles mapped directly to slide indices -->
   <div style="text-align:center">
     <span class="dot" onclick="currentSlide(1)"></span>
     <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
   </div>
 
-      <h2>How do I use this site?</h2>
-      <p>Select any of the pages from the menu above to begin exploring, there’s a unique search bar for each page containing information. Click on the card that fascinates you to read more information!</p>
-      <h2>Begin Exploring!</h2>
+  <!-- PAGE INSTRUCTIONS & GUIDANCE -->
+  <div class="home-instructions">
+    <h2>How do I use this site?</h2>
+    <p>Select any of the pages from the menu above to begin exploring, there’s a unique search bar for each page containing information. Click on the card that fascinates you to read more information!</p>
+    <h2>Begin Exploring!</h2>
   </div>
+
+  <!-- JS SCRIPT: Interactive Carousel / Image Slideshow Logic -->
+  <script>
+    /*
+      SLIDESHOW CONTROLLER LOGIC
+      --------------------------------------------------
+      Manages current slide index state, next/prev navigation, 
+      dot indicator highlights, and element visibility.
+    */
+    
+    // Initialize slide index to show first slide by default
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    /*
+      plusSlides(n)
+      --------------------------------------------------
+      Purpose: Steps forward or backward through slides.
+      Param: n (Number) - Direction step (+1 for next, -1 for prev).
+    */
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    /*
+      currentSlide(n)
+      --------------------------------------------------
+      Purpose: Jumps directly to a specific slide (triggered by dot click).
+      Param: n (Number) - Target slide index (1-based).
+    */
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    /*
+      showSlides(n)
+      --------------------------------------------------
+      Purpose: Handles boundary checks, hides inactive slides/dots, 
+               and shows active slide/dot.
+      Param: n (Number) - Requested slide index.
+    */
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+
+      // Loop back to start if index exceeds total slides
+      if (n > slides.length) { slideIndex = 1; }
+
+      // Loop to end if index drops below 1
+      if (n < 1) { slideIndex = slides.length; }
+
+      // Hide all slides
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      // Remove "active" class from all pagination dots
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+
+      // Reveal current slide (zero-indexed position in array)
+      slides[slideIndex - 1].style.display = "block";
+
+      // Highlight active dot indicator
+      dots[slideIndex - 1].className += " active";
+    }
+  </script>
+
 {% endblock body %}

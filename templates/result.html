@@ -1,13 +1,29 @@
+<!-- JINJA TEMPLATE INHERITANCE: Inherits structural HTML layout, head tags, and scripts from base.html -->
 {% extends "base.html" %}
 
+    <!-- JINJA CONTENT BLOCK: Injects form output content into the base template's body block -->
     {% block body %}
+        <!-- CONTAINER CARD: W3.CSS card component with light gray background, padding, and margin -->
         <div class="w3-container w3-card-4 w3-light-grey w3-margin w3-padding">
             <h2>Your Input:</h2>
+            
+            <!-- 
+                DYNAMIC DATA RENDERING:
+                Retrieves form input values passed from the Flask backend via the 'form_data' dictionary or object.
+            -->
+            <!-- Renders submitted First Name -->
             <p><strong>First Name:</strong> {{ form_data.firstName }}</p>
+            
+            <!-- Renders submitted Last Name -->
             <p><strong>Last Name:</strong> {{ form_data.lastName }}</p>
+            
+            <!-- Renders submitted Email address -->
             <p><strong>Email:</strong> {{ form_data.email }}</p>
+            
+            <!-- Renders submitted user Comment/Message -->
             <p><strong>Comment:</strong> {{ form_data.comment }}</p>
             
+            <!-- NAVIGATION ACTION: Directs user back to the form page to submit a new entry -->
             <a href="/submit" class="w3-button w3-blue w3-margin-top">Submit Another Response</a>
         </div>
     {% endblock body%}

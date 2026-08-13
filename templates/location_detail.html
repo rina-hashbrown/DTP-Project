@@ -1,39 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <!-- Character Set: Ensures UTF-8 encoding for standard text rendering -->
     <meta charset="UTF-8">
+    <!-- Viewport Configuration: Delivers proper scaling across mobile and desktop viewports -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Framework: Imports W3.CSS for card layout components and slide animations -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <!-- Flask Static Asset Link: Dynamically loads stylesheet from static directory -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- Google Fonts Imports: Preconnects and loads custom font families -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <title>Location Details!</title>
+    
+    <title>Location Details!</title>
 </head>
 
-<link rel="stylesheet" href="style.css">
-
+<!-- JINJA TEMPLATE INHERITANCE BLOCK: Injects location details into the master layout -->
 {% block body %}
+  <!-- CONTAINER: Applies entry animation (slide-in from left) and spacing -->
   <div class="location-detail w3-container w3-animate-left" style="gap: 10px">
+    
+    <!-- NAVIGATION LINK: Returns user to the main locations overview page via Flask routing -->
     <a href="{{ url_for('get_locations') }}" class="back-btn">&larr; Back to Options</a>
 
+    <!-- CARD WRAPPER: Grouping container for detail card -->
     <div class="card-wrapper">
+        
+        <!-- LOCATION DETAIL CARD: W3.CSS styled card displaying backend location properties -->
         <div class="ldetail w3-card-4">
-            <h3 id="lname"> {{ location.site }}</h3>
-            <p><strong>Location ID:</strong> {{ location.location_ID}}</p>
+            <!-- Dynamic Heading: Renders the site name for the selected location -->
+            <h3 id="lname">{{ location.site }}</h3>
+            
+            <!-- Dynamic Data Outputs: ID and Station properties -->
+            <p><strong>Location ID:</strong> {{ location.location_ID }}</p>
             <p><strong>Site:</strong> {{ location.station }}</p>
     
+            <!-- 
+                CONDITIONAL STATE DISPLAY LOGIC:
+                Renders state information only if the field exists, is not string 'None', and is not empty.
+            -->
             {% if location.state and location.state != 'None' and location.state != '' %}
             <p><strong>State:</strong> {{ location.state }}</p>
             {% endif %}
 
+            <!-- 
+                CONDITIONAL REGION DISPLAY LOGIC:
+                Renders region information only if the field exists, is not string 'None', and is not empty.
+            -->
             {% if location.region and location.region != 'None' and location.region != '' %}
             <p><strong>Region:</strong> {{ location.region }}</p>
             {% endif %}
 
+            <!-- Dynamic Country Output -->
             <p><strong>Country:</strong> {{ location.country }}</p>
         </div>
-    </div>
+        
+    </div> <!-- End of .card-wrapper -->
   </div>
 {% endblock body %}

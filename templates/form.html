@@ -1,52 +1,96 @@
+<!-- TEMPLATE INHERITANCE: Inherits structural HTML, head tags, and layout from base.html -->
 {% extends "base.html" %}
 
-    {% block body %}
-        <form action="/submit" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+<!-- JINJA TEMPLATE BLOCK: Injects form content into the base template's 'body' block -->
+{% block body %}
 
-            <h2>Questions</h2>
+    <!-- 
+        FORM CONTAINER: 
+        Sends form data to backend handler using HTTP POST.
+        Uses W3.CSS classes for card styling, margins, and text color.
+    -->
+    <form action="{{ url_for('submit') }}" method="POST" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
 
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
-                    <div class="w3-rest">
-                        First Name: <input class="w3-input w3-border" name="first_name" type="text" placeholder="First Name" value="{{ form_data.firstName if form_data }}">
-                        {% if errors and errors.firstNameErr %}
-                            <span class="w3-text-red">{{ errors.firstNameErr }}</span>
-                        {% endif %}
-                    </div>
+        <h2>Questions</h2>
+
+        <!-- FIRST NAME INPUT SECTION -->
+        <div class="w3-row w3-section">
+            <!-- Icon Column -->
+            <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
+            
+            <!-- Input & Validation Column -->
+            <div class="w3-rest">
+                First Name: 
+                <!-- 
+                    FORM RETENTION (value attribute):
+                    If 'form_data' exists (e.g., after a failed validation reload),
+                    re-populates the previously typed first name so user doesn't lose progress.
+                -->
+                <input class="w3-input w3-border" name="first_name" type="text" placeholder="First Name" value="{{ form_data.firstName if form_data }}">
+                
+                <!-- CONDITIONAL ERROR DISPLAY: Displays inline error message if backend validation fails -->
+                {% if errors and errors.firstNameErr %}
+                    <span class="w3-text-red">{{ errors.firstNameErr }}</span>
+                {% endif %}
             </div>
+        </div>
 
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
-                    <div class="w3-rest">
-                        Last Name: <input class="w3-input w3-border" type="text" name="last_name" placeholder="Last Name" value="{{ form_data.lastName if form_data }}">
-                        {% if errors and errors.lastNameErr %}
-                            <span class="w3-text-red">{{ errors.lastNameErr }}</span>
-                        {% endif %}
-                    </div>
+        <!-- LAST NAME INPUT SECTION -->
+        <div class="w3-row w3-section">
+            <!-- Icon Column -->
+            <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
+            
+            <!-- Input & Validation Column -->
+            <div class="w3-rest">
+                Last Name: 
+                <!-- Preserves last name input state upon form submission/re-render -->
+                <input class="w3-input w3-border" type="text" name="last_name" placeholder="Last Name" value="{{ form_data.lastName if form_data }}">
+                
+                <!-- CONDITIONAL ERROR DISPLAY -->
+                {% if errors and errors.lastNameErr %}
+                    <span class="w3-text-red">{{ errors.lastNameErr }}</span>
+                {% endif %}
             </div>
+        </div>
 
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
-                    <div class="w3-rest">
-                    Email: <input class="w3-input w3-border" type="text" name="email" placeholder="Email" value="{{ form_data.email if form_data }}">
-                        {% if errors and errors.emailErrr %}
-                            <span class="w3-text-red">{{ errors.emailErr }}</span>
-                        {% endif %}
-                    </div>
+        <!-- EMAIL INPUT SECTION -->
+        <div class="w3-row w3-section">
+            <!-- Icon Column -->
+            <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
+            
+            <!-- Input & Validation Column -->
+            <div class="w3-rest">
+                Email: 
+                <!-- Preserves email input state upon form submission/re-render -->
+                <input class="w3-input w3-border" type="text" name="email" placeholder="Email" value="{{ form_data.email if form_data }}">
+                
+                <!-- CONDITIONAL ERROR DISPLAY (Corrected typo from errors.emailErrr) -->
+                {% if errors and errors.emailErr %}
+                    <span class="w3-text-red">{{ errors.emailErr }}</span>
+                {% endif %}
             </div>
+        </div>
 
-            <div class="w3-row w3-section">
-                <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
-                    <div class="w3-rest">
-                    Comment: <input class="w3-input w3-border" name="comment" type="text" placeholder="Comment" value="{{ form_data.comment if form_data}}">
-                        {% if errors and errors.commentErr %}
-                            <span class="w3-text-red">{{ errors.commentErr }}</span>
-                        {% endif %}
-                    </div>
+        <!-- COMMENT INPUT SECTION -->
+        <div class="w3-row w3-section">
+            <!-- Icon Column -->
+            <div class="w3-col" style="width:50px"><i class="w3-user xxlarge fa fa-user"></i></div>
+            
+            <!-- Input & Validation Column -->
+            <div class="w3-rest">
+                Comment: 
+                <!-- Preserves comment input state upon form submission/re-render -->
+                <input class="w3-input w3-border" name="comment" type="text" placeholder="Comment" value="{{ form_data.comment if form_data }}">
+                
+                <!-- CONDITIONAL ERROR DISPLAY -->
+                {% if errors and errors.commentErr %}
+                    <span class="w3-text-red">{{ errors.commentErr }}</span>
+                {% endif %}
             </div>
+        </div>
 
-            <input type="submit" name="submit" value="Submit">  
-        </form>
+        <!-- SUBMIT BUTTON: Triggers POST submission to form action URL -->
+        <input type="submit" name="submit" value="Submit">  
+    </form>
 
-    {% endblock body%}
-
+{% endblock body %}

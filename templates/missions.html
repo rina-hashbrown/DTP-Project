@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Character Set: Enables standard UTF-8 encoding for characters and symbols -->
     <meta charset="UTF-8">
+    <!-- Mobile Responsiveness: Ensures proper sizing and scaling on mobile viewports -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-      <title>Missions</title>
+    
+    <!-- Framework Stylesheet: Imports W3.CSS for layout grids and cards -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <!-- Google Fonts Setup: Preconnects and fetches custom web typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS: Dynamically linked from Flask's static assets folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Missions</title>
   </head>
 
   <body id="nebula">
+    <!-- NAVIGATION BAR: Uses Flask route functions to generate dynamic nav links -->
     <nav class="w3-bar nav w3-container">
           <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
           <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
@@ -23,66 +32,100 @@
   </body>
 </html>
 
-<link rel="stylesheet" href="style.css">
-
+<!-- JINJA TEMPLATE INHERITANCE: Injects content into the layout's main body block -->
 {% block body %}
+  
+  <!-- HERO HEADER: Zoom animated page title banner -->
   <div class="mission w3-panel w3-animate-zoom">
     <h1 id="mission-title">Mission Log</h1>
   </div>
 
+  <!-- COLLAPSIBLE USER INSTRUCTIONS SECTION -->
   <div class="mission-use w3-container">
       <h2 id="Use-title">How to Use?</h2>
+      <!-- Action button that invokes the accordion JS toggle function -->
       <button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-left-align">Click Here</button>
-      <div mission id="Demo1" class="w3-container w3-hide">
-        <p>These are all mission statistics from 1960-70. Click on one for more information, such as Mission status, price, company and date & time! Or search by these features using the Search Function!</p>
+      
+      <!-- Collapsible text container (hidden initially by 'w3-hide') -->
+      <div id="Demo1" class="w3-container w3-hide">
+        <p>These are all mission statistics from 1960-70. Click on one for more information, such as Mission status, price, company and date & time! Or search by these features using the Search Function! Please begin with capital letters when searching. Searchable functions are Mission ID:, Status:, Company:, Date: & Time:. When searching don't leave a space after the colon</p>
     </div>
   </div>
   
-      <script>
+    <!-- JS FUNCTION: Collapsible Accordion Toggle -->
+    <script>
+      /*
+        myFunction(id)
+        --------------------------------------------------
+        Purpose: Toggles the visibility of a target element by adding/removing 'w3-show'.
+        Param: id (String) - The ID attribute of the element to expand/collapse.
+      */
       function myFunction(id) {
         var x = document.getElementById(id);
+        // Check if the 'w3-show' display class is missing
         if (x.className.indexOf("w3-show") == -1) {
-          x.className += " w3-show";
+          x.className += " w3-show"; // Append class to show content
         } else { 
-          x.className = x.className.replace(" w3-show", "");
+          x.className = x.className.replace(" w3-show", ""); // Remove class to hide content
         }
       }
     </script>
 
+  <!-- SEARCH INPUT FIELD: Capture user input for dynamic filtering -->
   <div class="input-container">
       <input id="cardSearchInput" type="text" placeholder="Search...">
   </div>
 
+  <!-- MISSION GRID CONTAINER: 3-column CSS Grid displaying mission cards -->
   <div class="main-mission w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+    
+    <!-- JINJA LOOP: Iterates through the collection of missions retrieved from the database -->
     {% for mission in missions %}
+      <!-- Dynamic route link navigating to the single mission detail page -->
       <a href="{{ url_for('single_mission', id=mission.mission_ID) }}" style="display: block; text-decoration: none; color: inherit;">
         <div class="main-mission w3-card-4 w3-center w3-hover-shadow">
+            <!-- Dynamic mission title -->
             <h3 id="mheading">{{ mission.name }}</h3>
-            <p class="contents"> {{ mission.mission_ID }} {{ mission.status }} {{ mission.time }} {{ mission.date }} {{ mission.company }}</p>
+            <!-- Embedded dataset properties used by the card and searchable by JS -->
+            <p class="contents"> Mission ID:{{ mission.mission_ID }} Status:{{ mission.status }} Time:{{ mission.time }} Date:{{ mission.date }} Company:{{ mission.company }}</p>
         </div>
       </a>
     {% endfor %}
   </div>
 
+  <!-- FOOTER PANEL: Styled historical scope notice -->
   <div class="mfooter w3-panel w3-border-top w3-border-bottom w3-border-orange">
     <p>All missions from 1960-70.</p>
   </div>
 
+  <!-- JS SCRIPT: Dynamic Front-End Grid Search Filter -->
   <script>
+    /*
+      LIVE MISSION CARD FILTER
+      --------------------------------------------------
+      Purpose: Scans card text and hides non-matching items in real time as the user types.
+    */
     let searchInput = document.getElementById('cardSearchInput');
+    // Selects all card link elements inside the grid container
     let cardLinks = document.querySelectorAll('.main-mission > a');
 
+    // Ensure the input field exists on the page before assigning event handlers
     if (searchInput) {
+      // Event Listener: Keyup triggers filtering instantly as the user types
       searchInput.addEventListener('keyup', function(event) {
+        // Normalize query string to lowercase for case-insensitive matching
         let searchText = event.target.value.toLowerCase();
 
+        // Loop through each card link in the grid
         cardLinks.forEach(function(cardLink) {
+          // Read all text inside the current card element
           let cardText = cardLink.textContent.toLowerCase();
 
+          // Compare search text against card contents
           if (cardText.includes(searchText)) {
-            cardLink.style.display = ""; // 
+            cardLink.style.display = ""; // Keeps card visible
           } else {
-            cardLink.style.display = "none"; //
+            cardLink.style.display = "none"; // Hides card from grid
           }
         });
       });

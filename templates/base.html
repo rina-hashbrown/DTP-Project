@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Character Set: Defines standard UTF-8 text encoding for universal character rendering -->
     <meta charset="UTF-8">
+    
+    <!-- Viewport Settings: Ensures full mobile responsiveness and proper rendering scale across browsers -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Compatibility Mode: Forces Legacy Internet Explorer to use the latest edge rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="content=IE=edge">
 
+    <!-- External UI Framework: Imports W3.CSS stylesheet for layout utilities and components -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+    
+    <!-- Material Icons: Imports Google's Material Symbol font for search UI icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search">
+    
+    <!-- Google Typography Preconnects & Font Styles (Bungee Shade and Mali) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Flask Static Asset Routing: Dynamically loads master style.css stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     
+    <!-- Master Website Title -->
     <title>Space Race</title>
   </head>
 
   <body class="w3-container">
 
+    <!-- PRIMARY TOP NAVIGATION BAR: Global links generated dynamically using Flask's url_for route helper -->
     <nav class="w3-bar top-nav w3-container">
       <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Home</a>
       <a href="{{ url_for('about') }}" class="w3-bar-item w3-button">About</a>
@@ -25,9 +39,10 @@
       <a href="{{ url_for('form') }}" class="w3-bar-item w3-button">Any Questions?</a>
     </nav>
 
+    <!-- SPACER / DECORATIVE CONTAINER: Visual spacing element between navigation bars -->
     <div class="unique-base-container"></div>
 
-    <!-- Shared Navigation Bar -->
+    <!-- DATABASE CATEGORY NAVIGATION BAR: Direct links to primary database archive views -->
     <nav class="w3-bar nav w3-container">
       <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
       <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
@@ -35,9 +50,15 @@
       <a href="{{ url_for('get_joints') }}" class="w3-bar-item w3-button">Mission Overview</a>
     </nav>
 
+    <!-- 
+      JINJA TEMPLATE INHERITANCE INJECTION POINT: 
+      Child pages extending "base.html" (e.g., Home, Missions, Locations, Form, Credits)
+      will inject their individual page content directly between these block tags.
+    -->
     {% block body %}
     {% endblock body %}
 
+    <!-- GLOBAL SITE FOOTER -->
     <div class="footer">
       <p>Footer</p>
     </div>

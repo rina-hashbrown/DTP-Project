@@ -1,33 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Character Set: Ensures standard unicode character encoding -->
   <meta charset="UTF-8">
+  <!-- Viewport Configuration: Ensures responsive rendering on mobile and desktop devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+  <!-- External Framework: W3.CSS library for responsive container and card styling -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+  <!-- Flask Static Resource: Dynamically links your primary CSS stylesheet from Flask's static folder -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  
+  <!-- Google Fonts Preconnection: Optimizes external font fetch performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Google Fonts Import: Loads custom typography styles -->
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-<title>Rocket Details!</title>
+  
+  <title>Rocket Details!</title>
 </head>
 
-<link rel="stylesheet" href="style.css">
-
+<!-- JINJA TEMPLATE BLOCK: Injects detail-page body content into the master layout -->
 {% block body %}
+  <!-- CONTAINER: Applies entry animation (slide/fade from bottom) and flexible layout styling -->
   <div class="rocket-detail w3-container w3-animate-bottom" style="gap: 10px">
+    
+    <!-- NAVIGATION LINK: Returns the user to the main rocket grid view via Flask route -->
     <a href="{{ url_for('get_rockets') }}" class="back-btn">&larr; Back to Roster</a>
 
+    <!-- DETAIL CARD CONTAINER: Outer wrapper grouping text information and rocket media -->
     <div class="card-wrapper">
+      
+      <!-- DATA CARD: W3.CSS card component displaying backend rocket attributes -->
       <div class="detail w3-card-4">
+        <!-- Jinja Dynamic Variable: Renders the name of the specific rocket -->
         <h1 id="detail-name">{{ rocket.rocket_name }}</h1>
+        
+        <!-- Jinja Dynamic Variable: Renders unique database ID for the rocket -->
         <p><strong>Rocket ID: {{ rocket.rocket_ID }} </strong></p>
+        
+        <!-- Jinja Dynamic Variable: Renders current operational status (e.g., Active, Retired) -->
         <p><strong>Status: {{ rocket.rocket_status }}</strong></p>
       </div>
 
-        <div class="rocket w3-card-4">
-          <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
-        </div>
+      <!-- IMAGE CARD: W3.CSS card component dedicated to displaying the rocket artwork -->
+      <div class="rocket w3-card-4">
+        <!-- 
+          DYNAMIC IMAGE PATH CONCATENATION:
+          Combines the base static folder directory ('images/') with the image filename stored 
+          in the backend model ('rocket.imageURL') using Jinja's string concatenation operator (~).
+        -->
+        <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
+      </div>
+
     </div>
   </div>
 {% endblock body %}

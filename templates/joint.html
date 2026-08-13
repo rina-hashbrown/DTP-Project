@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Defines character encoding for universal text support -->
         <meta charset="UTF-8">
+        <!-- Ensures responsive display across mobile and desktop devices -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- External Stylesheets: W3.CSS framework for structural styling -->
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
+        <!-- Google Fonts preconnections and custom font styles -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        
+        <!-- Flask Dynamic Routing: Loads the custom CSS file from the static folder -->
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <title>Mission Overview</title>
     </head>
 
     <body id="purple">
+    <!-- NAVIGATION BAR: Uses Jinja2's url_for() to generate dynamic route URLs -->
     <nav class="w3-bar nav w3-container">
         <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
         <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
@@ -23,71 +32,103 @@
     </body>
 </html>
 
-<link rel="stylesheet" href="style.css">
-  
+<!-- JINJA TEMPLATE BLOCK: Injects content into a master template layout if extending one -->
 {% block body %}
+  
+  <!-- PAGE HEADER: Animated title section -->
   <div class="overview w3-panel w3-animate-zoom">
     <h1 id="overview-title">Mission Overview</h1>
   </div>
 
+    <!-- COLLAPSIBLE INSTRUCTIONS SECTION -->
     <div class="mission-use w3-container">
       <h2 id="Use-title">How to Use?</h2>
+      <!-- Triggers JavaScript function 'myFunction' passing target ID 'Demo1' -->
       <button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-left-align">Click Here</button>
-        <div mission id="Demo1" class="w3-container w3-hide">
-            <p>This specific part of the archive is where the 3 other parts (Rocket, Location & Mission) collide into 1. For example, when you hover over a card, you're able to see what rocket and what location was used in that specific mission! If you're curious about a specific mission, feel free to search based on any of those features mentioned before!</p>
+      
+        <!-- Hidden content block toggled by the button click -->
+        <div id="Demo1" class="w3-container w3-hide">
+            <p>This specific part of the archive is where the 3 other parts (Rocket, Location & Mission) collide into 1. For example, when you hover over a card, you're able to see what rocket and what location was used in that specific mission! If you're curious about a specific mission, feel free to search based on any of those features mentioned before! Here are some tips for searching:</p>
+            <p>When looking for rockets, use, Rocket ID with the proper capitals. This applies to all the characteristics mentioned. Searchable functions are Rocket ID:, Location ID: & Mission Name:, don't leave a space after the colon.</p>
         </div>
     </div>
   
+    <!-- JS FUNCTION: Collapsible Accordion Toggle -->
     <script>
-            function myFunction(id) {
-                var x = document.getElementById(id);
-                if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-                } else { 
-                x.className = x.className.replace(" w3-show", "");
-                }
+        /*
+          myFunction(id)
+          --------------------------------------------------
+          Purpose: Toggles the visibility of a DOM element using W3.CSS classes.
+          Param: id (String) - The ID of the HTML element to toggle.
+        */
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            // Checks if W3.CSS 'w3-show' class is missing
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show"; // Reveals the element
+            } else { 
+                x.className = x.className.replace(" w3-show", ""); // Hides the element
             }
+        }
     </script>
 
+    <!-- SEARCH INPUT FIELD: Dynamic filtering target -->
     <div class="input-container">
         <input id="cardSearchInput" type="text" placeholder="Search...">
     </div>
 
+    <!-- CARDS DISPLAY CONTAINER: Uses Flexbox layout for grid arrangement -->
     <div class="main-joint w3-animate-bottom" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+    
+    <!-- JINJA2 LOOP: Iterates over backend 'joints' database/dictionary collection -->
     {% for joint in joints %}
         <div class="flip-card">
             <div class="flip-card-inner w3-card-4 w3-center w3-hover-shadow">
+                <!-- Front side of the card -->
                 <div class="flip-card-front">
                     <h3 class="oheading">Mission Name: {{ joint.mission_name }}</h3>
                 </div>
+                <!-- Back side of the card (revealed on CSS hover) -->
                 <div class="flip-card-back">
-                    <h3 class="information">Mission Name: {{ joint.mission_name }}</h3>
-                    <p class="information">Rocket ID: {{ joint.rocket_ID }}</p>
-                    <p class="information">Location_ID: {{ joint.location_ID }}</p>
+                    <h3 class="information">Mission Name:{{ joint.mission_name }}</h3>
+                    <p class="information">Rocket ID:{{ joint.rocket_ID }}</p>
+                    <p class="information">Location ID:{{ joint.location_ID }}</p>
                 </div>
             </div>
         </div>
     {% endfor %}
     </div>
 
+    <!-- JS SCRIPT: Real-time Front-End Search Filter -->
     <script>
+        /*
+          CARD SEARCH FILTERING
+          --------------------------------------------------
+          Purpose: Filters cards in real-time as the user types in the input box.
+        */
         let searchInput = document.getElementById('cardSearchInput');
         let cardLinks = document.querySelectorAll('.flip-card');
 
+        // Check if the search input element exists on the page
         if (searchInput) {
-        searchInput.addEventListener('keyup', function(event) {
-            let searchText = event.target.value.toLowerCase();
+            // Event Listener: Fires whenever a key is released in the search input
+            searchInput.addEventListener('keyup', function(event) {
+                // Get query text and convert to lowercase for case-insensitive matching
+                let searchText = event.target.value.toLowerCase();
 
-            cardLinks.forEach(function(cardLink) {
-            let cardText = cardLink.innerText.toLowerCase();
+                // Loop through every card element in the DOM
+                cardLinks.forEach(function(cardLink) {
+                    // Extract all text inside the current card (both front and back)
+                    let cardText = cardLink.innerText.toLowerCase();
 
-            if (cardText.includes(searchText)) {
-                cardLink.style.display = ""; // 
-            } else {
-                cardLink.style.display = "none"; //
-            }
+                    // Check if the search query exists inside the card's text
+                    if (cardText.includes(searchText)) {
+                        cardLink.style.display = ""; // Keeps card visible (resets to default display)
+                    } else {
+                        cardLink.style.display = "none"; // Hides non-matching card
+                    }
+                });
             });
-        });
         }
     </script>
     

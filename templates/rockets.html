@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Sets character encoding for proper text rendering -->
     <meta charset="UTF-8">
+    <!-- Ensures proper scaling and responsiveness on mobile screens -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Framework: W3.CSS stylesheet for grid layouts and UI components -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <!-- Preconnections to optimize Google Fonts load times -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Custom Google Fonts import -->
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Dynamic Flask Asset Routing: Loads local CSS file from static directory -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Rockets</title>
   </head>
 
   <body id="galaxy">
+    <!-- NAVIGATION BAR: Generates dynamic site links using Flask's url_for -->
     <nav class="w3-bar nav w3-container">
           <a href="{{ url_for('get_rockets') }}" class="w3-bar-item w3-button">Rockets</a>
           <a href="{{ url_for('get_missions') }}" class="w3-bar-item w3-button">Missions</a>
@@ -22,69 +32,101 @@
     </nav>
   </body>
 </html>
-<link rel="stylesheet" href="style.css">
 
+<!-- JINJA TEMPLATE INHERITANCE BLOCK: Injects page-specific body into base layout -->
 {% block body %}
+  
+  <!-- PAGE HERO HEADER: Animated title banner -->
   <div class="rocket w3-panel w3-animate-zoom">
-    <p>Rocket Roster</p>
+    <p id="rocket">Rocket Roster</p>
   </div>
 
+    <!-- INSTRUCTIONS / ACCORDION SECTION -->
     <div class="rocket-use w3-container">
       <h2 id="Use-title">How to Use?</h2>
+      <!-- Action button triggering JavaScript toggle function -->
       <button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-left-align">Click Here</button>
-      <div rocket id="Demo1" class="w3-container w3-hide">
-        <p>Navigate this page by searching the Name, Status or ID Number of each rocket in the Space Bar, or get lost in scrolling!</p>
+      
+      <!-- Collapsible instruction drawer (hidden by default via w3-hide) -->
+      <div id="Demo1" class="w3-container w3-hide">
+        <p>Navigate this page by searching the Name, Status or ID Number of each rocket in the Space Bar, or get lost in scrolling! Please begin with capital letters when searching. Searchable items are Rocket ID:, Status: & The name of the rocket, for the first 2, when referencing numbers and names, don't leave a space after the colon.</p>
       </div>
     </div>
 
+    <!-- JS FUNCTION: Accordion Visibility Switch -->
     <script>
+      /*
+        myFunction(id)
+        --------------------------------------------------
+        Purpose: Toggles the W3.CSS 'w3-show' class to show/hide collapsible content.
+        Param: id (String) - Target element's HTML ID attribute.
+      */
       function myFunction(id) {
         var x = document.getElementById(id);
+        // If element does not currently have 'w3-show' class, add it
         if (x.className.indexOf("w3-show") == -1) {
-          x.className += " w3-show";
+          x.className += " w3-show"; // Reveals content
         } else { 
-          x.className = x.className.replace(" w3-show", "");
+          // Otherwise, strip the class away
+          x.className = x.className.replace(" w3-show", ""); // Hides content
         }
       }
     </script>
 
+  <!-- SEARCH BAR INPUT: Dynamic live search field -->
   <div class="input-container">
       <input id="cardSearchInput" type="text" placeholder="Search...">
   </div>
 
-
+    <!-- GRID LAYOUT: Displays 3-column array of rocket cards -->
     <div class="main-rocket w3-grid w3-animate-bottom" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
+      
+      <!-- JINJA LOOP: Iterates through the list of rockets sent from backend -->
       {% for rocket in rockets %}
+        <!-- Dynamic link wrapping each card to navigate to individual rocket detail page -->
         <a href="{{ url_for('single_rocket', id=rocket.rocket_ID) }}" style="display: block; text-decoration: none; color: inherit;">
-          <div class= "main-rocket w3-card-4 w3-center w3-hover-shadow">
+          <div class="main-rocket w3-card-4 w3-center w3-hover-shadow">
             <h3 class="title">{{ rocket.rocket_name }}</h3>
-            <p class="contents"> {{ rocket.rocket_ID }} {{ rocket.rocket_status }} </p>
+            <p class="contents">Rocket ID:{{ rocket.rocket_ID }} Status:{{ rocket.rocket_status }} </p>
+            <!-- Dynamic Image Loader: Combines static path prefix with rocket image filename -->
             <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
           </div>
-      {% endfor %}
         </a>
+      {% endfor %}
     </div>
 
-
+  <!-- FOOTER PANEL: Styled historical note footer -->
   <div class="rfooter w3-panel w3-border-top w3-border-bottom w3-border-orange">
     <p>All rockets from 1960-70.</p>
   </div>
 
+  <!-- JS SCRIPT: Dynamic Search Filtering for Grid Items -->
   <script>
+    /*
+      LIVE ROCKET CARD FILTER
+      --------------------------------------------------
+      Purpose: Filters out rocket cards dynamically based on user input in search bar.
+    */
     let searchInput = document.getElementById('cardSearchInput');
+    // Selects all clickable card wrappers in the grid
     let cardLinks = document.querySelectorAll('.main-rocket > a');
 
+    // Confirm search input exists before attaching listener
     if (searchInput) {
+      // Event Listener: Keyup triggers filtering instantly on typing
       searchInput.addEventListener('keyup', function(event) {
+        // Convert user search string to lowercase for case-insensitive check
         let searchText = event.target.value.toLowerCase();
 
+        // Check text content inside each rocket card wrapper
         cardLinks.forEach(function(cardLink) {
           let cardText = cardLink.textContent.toLowerCase();
 
+          // Show card if text matches query; otherwise hide card
           if (cardText.includes(searchText)) {
-            cardLink.style.display = ""; // 
+            cardLink.style.display = ""; // Displays element normally
           } else {
-            cardLink.style.display = "none"; //
+            cardLink.style.display = "none"; // Hides element from layout
           }
         });
       });

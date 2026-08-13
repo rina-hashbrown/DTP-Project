@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character Encoding: Standard UTF-8 setup for text compatibility -->
     <meta charset="UTF-8">
+    <!-- Mobile Responsiveness: Ensures proper scaling on devices of all screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- External Framework: Imports W3.CSS framework for card components and animations -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <!-- Flask Asset Routing: Loads local stylesheet from Flask's static assets directory -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- Google Fonts Imports: Optimizes preconnections and fetches custom typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
     <title>Mission Details!</title>
 </head>
 
-<link rel="stylesheet" href="style.css">
-
+<!-- JINJA TEMPLATE BLOCK: Injects mission detail content into master layout block -->
 {% block body %}
+  <!-- CONTAINER: Applies left slide animation (w3-animate-left) and spacing -->
   <div class="mission-detail w3-container w3-animate-left" style="gap: 10px">
+    
+    <!-- NAVIGATION LINK: Returns user to the main mission list page using Flask routing -->
     <a href="{{ url_for('get_missions') }}" class="back-btn">&larr; Back to Roster</a>
 
+    <!-- CARD WRAPPER: Grouping container for detail cards -->
     <div class="card-wrapper">
+        
+        <!-- MISSION DETAIL CARD: W3.CSS styled card displaying dataset properties -->
         <div class="mdetail w3-card-4">
+            <!-- Dynamic Heading: Renders the specific mission title -->
             <h3 id="mname">{{ mission.name }}</h3>
+            
+            <!-- Dynamic Data Outputs: Highlighted using the <mark> HTML tag -->
             <p>Mission ID: <mark>{{ mission.mission_ID }}</mark></p>
             <p>Status: <mark>{{ mission.status }}</mark></p>
             <p>Company: <mark>{{ mission.company }}</mark></p>
             <p>Date & Time: <mark>{{ mission.date }} at {{ mission.time }}</mark></p>
+            
+            <!-- CONDITIONAL PRICE DISPLAY LOGIC -->
             <p>Price: <mark>
+                <!-- 
+                  Jinja2 If Statement:
+                  Checks if the price exists, is not string 'None', and is not empty.
+                  Displays formatted dollar amount if valid, otherwise falls back to 'N/A'.
+                -->
                 {% if mission.price and mission.price != 'None' and mission.price != '' %}
                     ${{ mission.price }}
                 {% else %}
                     N/A
                 {% endif %}
                 </mark>
+            </p>
         </div>
-    </div>
+        
+    </div> <!-- End of .card-wrapper -->
+  </div>
 {% endblock body %}

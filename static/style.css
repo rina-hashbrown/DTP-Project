@@ -58,7 +58,7 @@ body {
   z-index: 10;
   position: absolute;                 /* Positions top edge at vertical center */
   transform: translateY(-50%);
-  top: 125%;
+  top: 100%;
   width: auto;
   margin-top: -22px;
   padding: 16px;

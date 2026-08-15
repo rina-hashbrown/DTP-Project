@@ -45,7 +45,7 @@
         <!-- Hidden content block toggled by the button click -->
         <div id="Demo1" class="w3-container w3-hide">
             <p>This specific part of the archive is where the 3 other parts (Rocket, Location & Mission) collide into 1. For example, when you hover over a card, you're able to see what rocket and what location was used in that specific mission! If you're curious about a specific mission, feel free to search based on any of those features mentioned before! Here are some tips for searching:</p>
-            <p>When looking for rockets, use, Rocket ID with the proper capitals. This applies to all the characteristics mentioned. Searchable functions are Rocket ID:, Location ID: & Mission Name:, don't leave a space after the colon.</p>
+            <p>When looking for rockets, use, Rocket ID with the proper capitals. This applies to all the characteristics mentioned. Searchable functions are Rocket ID:, Location ID: & Mission Title:, don't leave a space after the colon.</p>
         </div>
     </div>
   
@@ -82,11 +82,11 @@
             <div class="flip-card-inner w3-card-4 w3-center w3-hover-shadow">
                 <!-- Front side of the card -->
                 <div class="flip-card-front">
-                    <h3 class="oheading">{{ joint.mission_title }}</h3>
+                    <h3 class="oheading">ID No.{{ joint.joint_ID }},{{ joint.mission_name }}</h3>
                 </div>
                 <!-- Back side of the card (revealed on CSS hover) -->
                 <div class="flip-card-back">
-                    <h3 class="information">Mission title:{{ joint.mission_title }}</h3>
+                    <h3 class="information">Mission title:{{ joint.mission_name }}</h3>
                     <p class="information">Rocket ID:{{ joint.rocket_ID }}</p>
                     <p class="information">Location ID:{{ joint.location_ID }}</p>
                 </div>

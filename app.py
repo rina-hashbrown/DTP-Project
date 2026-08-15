@@ -50,16 +50,9 @@ class Mission(db.Model):
 class Location(db.Model):
     __table__ = db.metadata.tables["location"]
 
-# Reflects the 'joint' junction table for composite M:N relationships
+# Reflects the 'joint' junction table from databse.db.
 class Joint(db.Model):
     __table__ = db.metadata.tables['joint']
-    # Explicitly defines composite primary keys for junction table mapping
-    __mapper_args__ = {
-        'primary_key': [
-            db.metadata.tables['joint'].c.rocket_ID,
-            db.metadata.tables['joint'].c.location_ID,
-        ]
-    }
 
 # 
 # 3. STATIC & INFORMATIONAL PAGE ROUTES

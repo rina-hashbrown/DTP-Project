@@ -31,11 +31,7 @@
           <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Home</a>
     </nav>
   </body>
-</html>
 
-<!-- JINJA TEMPLATE INHERITANCE BLOCK: Injects page-specific body into base layout -->
-{% block body %}
-  
   <!-- PAGE HERO HEADER: Animated title banner -->
   <div class="rocket w3-panel w3-animate-zoom">
     <p id="rocket">Rocket Roster</p>
@@ -132,5 +128,4 @@
       });
     }
   </script>
-
-{% endblock %}
+</html>

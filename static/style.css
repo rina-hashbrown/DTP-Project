@@ -320,6 +320,7 @@ body {
 /* Individual rocket detail view page background */
 .rocket-detail.w3-container {
     background-image: url(images/rockbg.jpg);
+    height: 100%;
 }
 
 /* Card details container for single rocket display */
@@ -743,4 +744,58 @@ body {
   background-color: rgb(255, 157, 0);
   color: white;
   text-align: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.error-body {
+    background-color: #f3f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.error-container {
+    background-image: url(images/error.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Bungee Shade", sans-serif;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 700px
+}
+
+#error-h1 {
+    font-size: 10rem;
+    color: #000000;
+}
+
+#error-p {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.a {
+    text-decoration: none;
+    background-color: #ff5733;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.a:hover {
+    background-color: #e6482e;
 }

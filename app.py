@@ -58,6 +58,16 @@ class Joint(db.Model):
 # 3. STATIC & INFORMATIONAL PAGE ROUTES
 # 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    """Renders the 404 error."""
+    return render_template('error.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    """Renders the 500 error."""
+    return render_template('generror.html'), 500
+
 @app.route('/')
 def home():
     """Renders the Home page landing view."""

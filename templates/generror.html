@@ -1,20 +1,38 @@
 <!DOCTYPE html>
+<!-- Specifies the language of the document content as English -->
 <html lang="en">
 <head>
+    <!-- Sets the character encoding to UTF-8 for proper text rendering -->
     <meta charset="UTF-8">
+    
+    <!-- Configures view dimensions and scaling for responsive design across devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Dynamic link using Flask's url_for to route to the main CSS stylesheet in the static folder -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- Defines the browser tab title for the 500 server error page -->
     <title>500 Error</title>
 </head>
 <body id="error-body">
+    <!-- Main wrapper container used to center and format the error UI -->
     <div class="error-container">
+        
+        <!-- Primary heading highlighting the 500 status code -->
         <h1 id="error-h1">500 Error</h1>
+        
+        <!-- Subheading offering a friendly clarification that the issue is server-side -->
         <h2 id="error-h2">Oops it's us, not you!</h2>
+        
+        <!-- Paragraph explaining the internal server issue and offering next steps -->
         <p id="error-p">
             An unexpected server error occured while processing your request. Try heading back to the home or trying again shortly!
         </p>
+        
+        <!-- Dynamic Jinja2 link to route the user back to the application's homepage -->
         <a href="{{ url_for('home') }}" class="w3-bar-item w3-button">Go back to Home!
         </a>
+        
     </div>
 </body>
 </html>

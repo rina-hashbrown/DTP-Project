@@ -36,13 +36,13 @@
             <h3 id="mname">{{ mission.name }}</h3>
             
             <!-- Dynamic Data Outputs: Highlighted using the <mark> HTML tag -->
-            <p>Mission ID: <mark>{{ mission.mission_ID }}</mark></p>
-            <p>Status: <mark>{{ mission.status }}</mark></p>
-            <p>Company: <mark>{{ mission.company }}</mark></p>
-            <p>Date & Time: <mark>{{ mission.date }} at {{ mission.time }}</mark></p>
+            <p id="mission-paragraph">Mission ID: <mark>{{ mission.mission_ID }}</mark></p>
+            <p id="mission-paragraph">Status: <mark>{{ mission.status }}</mark></p>
+            <p id="mission-paragraph">Company: <mark>{{ mission.company }}</mark></p>
+            <p id="mission-paragraph">Date & Time: <mark>{{ mission.date }} at {{ mission.time }}</mark></p>
             
             <!-- CONDITIONAL PRICE DISPLAY LOGIC -->
-            <p>Price: <mark>
+            <p id="mission-paragraph">Price: <mark>
                 <!-- 
                   Jinja2 If Statement:
                   Checks if the price exists, is not string 'None', and is not empty.

@@ -36,15 +36,15 @@
             <h3 id="lname">{{ location.site }}</h3>
             
             <!-- Dynamic Data Outputs: ID and Station properties -->
-            <p><strong>Location ID:</strong> {{ location.location_ID }}</p>
-            <p><strong>Site:</strong> {{ location.station }}</p>
+            <p id="location-paragraph"><strong>Location ID:</strong> {{ location.location_ID }}</p>
+            <p id="location-paragraph"><strong>Site:</strong> {{ location.station }}</p>
     
             <!-- 
                 CONDITIONAL STATE DISPLAY LOGIC:
                 Renders state information only if the field exists, is not string 'None', and is not empty.
             -->
             {% if location.state and location.state != 'None' and location.state != '' %}
-            <p><strong>State:</strong> {{ location.state }}</p>
+            <p id="location-paragraph"><strong>State:</strong> {{ location.state }}</p>
             {% endif %}
 
             <!-- 
@@ -52,11 +52,11 @@
                 Renders region information only if the field exists, is not string 'None', and is not empty.
             -->
             {% if location.region and location.region != 'None' and location.region != '' %}
-            <p><strong>Region:</strong> {{ location.region }}</p>
+            <p id="location-paragraph"><strong>Region:</strong> {{ location.region }}</p>
             {% endif %}
 
             <!-- Dynamic Country Output -->
-            <p><strong>Country:</strong> {{ location.country }}</p>
+            <p id="location-paragraph"><strong>Country:</strong> {{ location.country }}</p>
         </div>
         
     </div> <!-- End of .card-wrapper -->

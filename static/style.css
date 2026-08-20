@@ -198,24 +198,34 @@ body {
 
 /* Orange gradient panel used in the About section */
 .about.w3-panel {
-    background-image: linear-gradient(to bottom right, rgb(181, 244, 215), rgb(60, 227, 180));
+    background-color: #8ef8ce;
     border: 8px solid #0cba8c;
     text-align: center;
     padding-bottom: 8px;
     margin-bottom: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
     box-shadow: 5px 10px #037053;
+    transition:transform .2s;
 }
 
+.about.w3-panel:hover, .about2.w3-panel:hover {
+    transform: scale(1.1);
+    background-color: #43fd97;
+}
 /* Secondary gradient panel variation for About section */
 .about2.w3-panel {
-    background-image: linear-gradient(to bottom right, rgb(197, 237, 220), rgb(10, 230, 135));;
+    background-color: #7fe7bf;
     border: 8px solid #0cba8c;
     font-family: "Bungee Shade", sans-serif;
+    margin: 40px 50px;
     text-align: center;
     padding-bottom: 8px;
     margin-bottom: 60px;
     box-shadow: 5px 10px #037053;
+    transition:transform .2s;
 }
+
 
 /* Credits block container with custom border and retro shadow effect */
 .credits.w3-container {

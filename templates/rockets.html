@@ -85,7 +85,7 @@
             <h3 class="title">{{ rocket.rocket_name }}</h3>
             <p class="contents">Rocket ID:{{ rocket.rocket_ID }} Status:{{ rocket.rocket_status }} </p>
             <!-- Dynamic Image Loader: Combines static path prefix with rocket image filename -->
-            <img src="{{ url_for('static', filename='images/' ~ rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
+            <img src="{{ url_for('static', filename='images/' + rocket.imageURL) }}" alt="{{ rocket.rocket_name }}">
           </div>
         </a>
       {% endfor %}
